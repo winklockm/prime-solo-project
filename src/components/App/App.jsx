@@ -20,6 +20,8 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
+import Overview from '../Overview/Overview';
+
 import './App.css';
 
 function App() {
@@ -53,11 +55,13 @@ function App() {
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
+            // logged in shows Overview else shows LoginPage
             exact
-            path="/user"
+            // path="/user"
+            path="/overview"
           >
-            <UserPage />
+            <Overview />
+            {/* <UserPage /> */}
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -74,8 +78,8 @@ function App() {
           >
             {user.id ?
               // If the user is already logged in, 
-              // redirect to the /user page
-              <Redirect to="/user" />
+              // redirect to the /overview page
+              <Redirect to="/overview" />
               :
               // Otherwise, show the login page
               <LoginPage />
@@ -88,8 +92,8 @@ function App() {
           >
             {user.id ?
               // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
+              // redirect them to the /overview page
+              <Redirect to="/overview" />
               :
               // Otherwise, show the registration page
               <RegisterPage />
@@ -102,8 +106,8 @@ function App() {
           >
             {user.id ?
               // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
+              // redirect them to the /overview page
+              <Redirect to="/overview" />
               :
               // Otherwise, show the Landing page
               <LandingPage />
@@ -117,6 +121,10 @@ function App() {
         </Switch>
         <Footer />
       </div>
+
+      {/* <Route exact path="/overview">
+        <Overview />
+      </Route> */}
     </Router>
   );
 }
