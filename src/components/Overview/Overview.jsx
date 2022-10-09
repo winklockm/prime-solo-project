@@ -1,3 +1,4 @@
+import LogOutButton from '../LogOutButton/LogOutButton';
 
 function Overview() {
 
@@ -10,6 +11,7 @@ function Overview() {
             <p># medical providers</p>
             <p># medications</p>
             <p># insurance plans</p>
+            <LogOutButton className="navLink" />
         </>
     )
 }

@@ -21,6 +21,9 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
 import Overview from '../Overview/Overview';
+import List from '../List/List';
+import Detail from '../Detail/Detail';
+import BottomNav from '../BottomNav/BottomNav';
 
 import './App.css';
 
@@ -36,7 +39,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        {/* <Nav /> */}
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -61,15 +64,38 @@ function App() {
             path="/overview"
           >
             <Overview />
+            {/* <BottomNav /> */}
             {/* <UserPage /> */}
           </ProtectedRoute>
 
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
-            path="/info"
+            path="/medicalteam"
           >
-            <InfoPage />
+            <List />
+            <Detail />
+            {/* <BottomNav /> */}
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/medication"
+          >
+            <List />
+            <Detail />
+            {/* <BottomNav /> */}
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/insurance"
+          >
+            <List />
+            <Detail />
+            {/* <BottomNav /> */}
           </ProtectedRoute>
 
           <Route
@@ -119,6 +145,7 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
+        <BottomNav />
         <Footer />
       </div>
 
