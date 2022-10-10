@@ -8,7 +8,7 @@ function List() {
     return (
         <>
             <Container maxWidth="sm">
-                <p>This is the List component</p>
+                <p className="componentTitle">This is the List component</p>
                 <Item />
                 <Item />
                 <Item />
