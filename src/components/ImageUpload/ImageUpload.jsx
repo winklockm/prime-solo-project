@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './ImageUpload.css'
+import Stack from '@mui/material/Stack';
 
 
 function ImageUpload() {
@@ -33,7 +34,11 @@ function ImageUpload() {
 
 
     return (
-        <div className='imageUploadForm'>
+        <Stack spacing={2} 
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        >
         
             <TextField
             id="filled-basic" 
@@ -60,7 +65,7 @@ function ImageUpload() {
         />
             <Button onClick={uploadImage} variant="contained">Image Preview</Button>
             <img src={patientImage}></img> */}
-        </div>
+        </Stack>
     )
 }
 
