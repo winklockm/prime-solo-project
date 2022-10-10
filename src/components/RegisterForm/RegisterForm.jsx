@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
+import ImageUpload from '../ImageUpload/ImageUpload';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -81,6 +82,8 @@ function RegisterForm() {
         onChange={(event) => setPatientPhoto(event.target.value)}
         />
       </div>
+
+        <ImageUpload />
 
       <div>
         <input className="btn" type="submit" name="submit" value="Register" />
