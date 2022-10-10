@@ -20,6 +20,11 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
+import Overview from '../Overview/Overview';
+import List from '../List/List';
+import Detail from '../Detail/Detail';
+import BottomNav from '../BottomNav/BottomNav';
+
 import './App.css';
 
 function App() {
@@ -34,79 +39,66 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        {/* <Nav /> */}
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
-
-          {/* Visiting localhost:3000/about will show the about page. */}
-          <Route
-            // shows AboutPage at all times (logged in or not)
-            exact
-            path="/about"
-          >
-            <AboutPage />
-          </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
-          <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
-            exact
-            path="/user"
-          >
-            <UserPage />
+            
+            {/* // logged in shows overview route with overview component, else shows LoginPage */}
+          <ProtectedRoute exact path="/overview">
+            <Overview />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/info"
-          >
-            <InfoPage />
+          {/* // logged in shows medicalteam route with List component, else shows LoginPage */}
+          <ProtectedRoute exact path="/medicalteam">
+            <List />
           </ProtectedRoute>
 
-          <Route
-            exact
-            path="/login"
-          >
+          {/* // logged in shows medication route with List component, else shows LoginPage */}
+          <ProtectedRoute exact path="/medication">
+            <List />
+          </ProtectedRoute>
+
+          {/* // logged in shows medication route with List component, else shows LoginPage */}
+          <ProtectedRoute exact path="/insurance">
+            <List />
+          </ProtectedRoute>
+
+          <Route exact path="/login">
             {user.id ?
               // If the user is already logged in, 
-              // redirect to the /user page
-              <Redirect to="/user" />
+              // redirect to the /overview page
+              <Redirect to="/overview" />
               :
               // Otherwise, show the login page
               <LoginPage />
             }
           </Route>
 
-          <Route
-            exact
-            path="/registration"
-          >
+          <Route exact path="/registration">
             {user.id ?
               // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
+              // redirect them to the /overview page
+              <Redirect to="/overview" />
               :
               // Otherwise, show the registration page
               <RegisterPage />
             }
           </Route>
 
-          <Route
-            exact
-            path="/home"
-          >
+          <Route exact path="/home">
             {user.id ?
               // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
+              // redirect them to the /overview page
+              <Redirect to="/overview" />
               :
-              // Otherwise, show the Landing page
-              <LandingPage />
+              // Otherwise, show the Login page
+              <LoginPage />
             }
           </Route>
 
@@ -115,10 +107,12 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
+        <BottomNav />
         <Footer />
       </div>
     </Router>
   );
+
 }
 
 export default App;
