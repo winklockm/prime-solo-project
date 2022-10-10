@@ -1,26 +1,27 @@
 import React from 'react';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 function LoginPage() {
   const history = useHistory();
 
   return (
-    <div>
+    <Stack direction="column"
+    justifyContent="space-between"
+    alignItems="center"
+    spacing={7}>
+    {/* <div> */}
       <LoginForm />
-
       <center>
-        <button
-          type="button"
-          className="btn btn_asLink"
-          onClick={() => {
-            history.push('/registration');
-          }}
-        >
-          Register
-        </button>
+        <p>New here?</p>
+        <Button
+        onClick={() => {history.push('/registration');}} 
+        variant="outlined">Create Account</Button>
       </center>
-    </div>
+    {/* </div> */}
+    </Stack>
   );
 }
 

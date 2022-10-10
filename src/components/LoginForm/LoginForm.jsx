@@ -4,6 +4,8 @@ import {useSelector} from 'react-redux';
 import Stack from '@mui/material/Stack';
 import './LoginForm.css'
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -28,6 +30,7 @@ function LoginForm() {
   }; // end login
 
   return (
+    <Container maxWidth="sm">
     <form className="formPanel" onSubmit={login}>
       {/* <h2>Login</h2> */}
       {errors.loginMessage && (
@@ -107,20 +110,12 @@ function LoginForm() {
           /> */}
         </div>
         <div>
-          <input className="btn" type="submit" name="submit" value="Log In" />
+          {/* <input className="btn" type="submit" name="submit" value="Log In" /> */}
+          <Button type="submit" name="submit" value="Log In" variant="contained">Log In</Button>
         </div>
-
-
       </Stack>
-
-
-
-
-
-
-
-
     </form>
+    </Container>
   );
 }
 
