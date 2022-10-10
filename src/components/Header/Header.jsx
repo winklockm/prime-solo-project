@@ -10,17 +10,18 @@ function Header() {
   return (
     <div className="header">
       <div>
-        {/* If no user is logged in, show these links */}
+        {/* If no user is logged in, show logo and subtitle */}
         {!user.id && (
           // If there's no user, show only logo
-          <Container className='header' maxWidth="sm">
+          <Container className='header-large' maxWidth="sm">
             <Stack
-            direction="row"
-            justifyContent="flex-end"
+            direction="column"
+            justifyContent="center"
             alignItems="center"
             spacing={0}
             >
-              <h1>TakeCare</h1>
+              <h1 className='title'>TakeCare</h1>
+              <h2 className='subtitle'>caregiving. centralized.</h2>
             </Stack>
           </Container>
         )}
@@ -33,8 +34,8 @@ function Header() {
             justifyContent="space-between"
             alignItems="center"
             spacing={0}>
-              <h3>Picture</h3>
-              <h1>TakeCare</h1>
+              <h2 className='subtitle'>Picture</h2>
+              <h1 className='title'>TakeCare</h1>
             </Stack>
           </Container>
         )}
