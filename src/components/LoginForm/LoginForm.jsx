@@ -38,38 +38,7 @@ function LoginForm() {
           {errors.loginMessage}
         </h3>
       )}
-      {/* <div>
-        <label htmlFor="username">
-          Username
-          <div>
-            <input
-              type="text"
-              name="username"
-              required
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
-            />
-          </div>
-        </label>
-      </div> */}
-      {/* <div>
-        <label htmlFor="password">
-          Password
-          <div>
-            <input
-              type="password"
-              name="password"
-              required
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-          </div>
-        </label>
-      </div> */}
-      {/* <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
-      </div> */}
-
+      
 
       <Stack spacing={4}>
         <div>
@@ -82,14 +51,6 @@ function LoginForm() {
           value={username}
           onChange={(event) => setUsername(event.target.value)}
           />
-          
-          {/* <input
-                  type="text"
-                  name="username"
-                  required
-                  value={username}
-                  onChange={(event) => setUsername(event.target.value)}
-          /> */}
         </div>
         <div>
           {/* <p className='loginLabel'>password</p> */}
@@ -100,14 +61,7 @@ function LoginForm() {
           required
           value={password}
                 onChange={(event) => setPassword(event.target.value)}
-          />
-          {/* <input
-                type="password"
-                name="password"
-                required
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-          /> */}
+        />          
         </div>
         <div>
           {/* <input className="btn" type="submit" name="submit" value="Log In" /> */}
