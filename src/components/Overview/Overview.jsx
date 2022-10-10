@@ -8,7 +8,6 @@ function Overview() {
 
     return (
         <>
-
             <Container maxWidth="sm">
                 <Stack spacing={2}>
                     <p>This is the Overview component</p>
@@ -16,12 +15,9 @@ function Overview() {
                     <p># medical providers</p>
                     <p># medications</p>
                     <p># insurance plans</p>
-                    <LogOutButton className="navLink" />
+                    <LogOutButton />
                 </Stack>
-
-
             </Container>
-
         </>
     )
 }
