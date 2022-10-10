@@ -1,4 +1,5 @@
 import Item from "../Item/Item";
+import Container from '@mui/material/Container';
 
 function List() {
 
@@ -6,10 +7,12 @@ function List() {
 
     return (
         <>
-            <p>This is the List component</p>
-            <Item />
-            <Item />
-            <Item />
+            <Container maxWidth="sm">
+                <p>This is the List component</p>
+                <Item />
+                <Item />
+                <Item />
+            </Container>
         </>
     )
 }
