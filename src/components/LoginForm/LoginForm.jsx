@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
+import Stack from '@mui/material/Stack';
+import './LoginForm.css'
+import TextField from '@mui/material/TextField';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -26,39 +29,97 @@ function LoginForm() {
 
   return (
     <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
+      {/* <h2>Login</h2> */}
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
         </h3>
       )}
-      <div>
+      {/* <div>
         <label htmlFor="username">
-          Username:
-          <input
-            type="text"
-            name="username"
-            required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
+          Username
+          <div>
+            <input
+              type="text"
+              name="username"
+              required
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+          </div>
         </label>
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
+          Password
+          <div>
+            <input
+              type="password"
+              name="password"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </div>
         </label>
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <input className="btn" type="submit" name="submit" value="Log In" />
-      </div>
+      </div> */}
+
+
+      <Stack spacing={4}>
+        <div>
+          {/* <p className='loginLabel'>username</p> */}
+          <TextField 
+          id="filled-basic" 
+          label="username" 
+          variant="filled" 
+          required
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+          />
+          
+          {/* <input
+                  type="text"
+                  name="username"
+                  required
+                  value={username}
+                  onChange={(event) => setUsername(event.target.value)}
+          /> */}
+        </div>
+        <div>
+          {/* <p className='loginLabel'>password</p> */}
+          <TextField
+          id="filled-basic" 
+          label="password" 
+          variant="filled" 
+          required
+          value={password}
+                onChange={(event) => setPassword(event.target.value)}
+          />
+          {/* <input
+                type="password"
+                name="password"
+                required
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+          /> */}
+        </div>
+        <div>
+          <input className="btn" type="submit" name="submit" value="Log In" />
+        </div>
+
+
+      </Stack>
+
+
+
+
+
+
+
+
     </form>
   );
 }
