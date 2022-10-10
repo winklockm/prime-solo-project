@@ -10,13 +10,13 @@ import Paper from '@mui/material/Paper';
 import {useHistory} from 'react-router-dom'
 
 function BottomNav() {
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = React.useState();
     const ref = React.useRef(null);
     const history = useHistory();
   
     React.useEffect(() => {
       ref.current.ownerDocument.body.scrollTop = 0;
-      }, [value]);
+    }, [value]);
   
       const changePage = (value) => {
       console.log('in changePage and value is:', value);
@@ -33,7 +33,7 @@ function BottomNav() {
         history.push('/insurance')
       }
     }
-  
+
     return (
       <Box sx={{ pb: 7 }} ref={ref}>
         <CssBaseline />
