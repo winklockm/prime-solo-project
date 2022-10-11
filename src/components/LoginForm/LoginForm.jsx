@@ -44,9 +44,8 @@ function LoginForm() {
         <div>
           {/* <p className='loginLabel'>username</p> */}
           <TextField 
-          id="filled-basic" 
           label="username" 
-          variant="filled" 
+          variant="outlined" 
           size="small"
           required
           value={username}
@@ -56,9 +55,9 @@ function LoginForm() {
         <div>
           {/* <p className='loginLabel'>password</p> */}
           <TextField
-          id="filled-basic" 
           label="password" 
-          variant="filled" 
+          type="password"
+          variant="outlined" 
           size="small"
           required
           value={password}
