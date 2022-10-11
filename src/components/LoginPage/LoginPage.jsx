@@ -18,7 +18,7 @@ function LoginPage() {
         <p>New here?</p>
         <Button
         onClick={() => {history.push('/registration');}} 
-        variant="outlined">Create Account</Button>
+        variant="outlined" size="small">Create Account</Button>
       </center>
     {/* </div> */}
     </Stack>
