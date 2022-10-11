@@ -10,8 +10,8 @@ function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [patient, setPatient] = useState('');
-  const [patientPhoto, setPatientPhoto] = useState('');
   const errors = useSelector((store) => store.errors);
+  const patientPhoto = useSelector((store) => store.patient);
   const dispatch = useDispatch();
 
   const registerUser = (event) => {
