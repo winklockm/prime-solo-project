@@ -18,7 +18,7 @@ function RegisterForm() {
   const uploadImage = () => {
     console.log('in uploadImage. here is image:', image);
     setPatientPhoto(image);
-}
+  }
 
   const registerUser = (event) => {
     event.preventDefault();
@@ -87,7 +87,7 @@ function RegisterForm() {
             />
           </div>
           <div>      
-            <Button onClick={uploadImage} size="small" variant="contained">Image Preview</Button>
+            <Button onClick={uploadImage} size="small" variant="outlined">Image Preview</Button>
           </div>
       
             {/* show image only if there is a patientPhoto set */}
@@ -96,8 +96,9 @@ function RegisterForm() {
                 <img src={patientPhoto} className='imagePreview'></img>
               </div>
             )} 
+
           <div>
-            <input className="btn" type="submit" name="submit" value="Register" />
+            <Button onClick={registerUser} size="small" variant="contained">Create Account</Button>
           </div>
         </Stack>
       </form>
