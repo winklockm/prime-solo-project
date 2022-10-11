@@ -47,6 +47,7 @@ function LoginForm() {
           id="filled-basic" 
           label="username" 
           variant="filled" 
+          size="small"
           required
           value={username}
           onChange={(event) => setUsername(event.target.value)}
@@ -58,6 +59,7 @@ function LoginForm() {
           id="filled-basic" 
           label="password" 
           variant="filled" 
+          size="small"
           required
           value={password}
                 onChange={(event) => setPassword(event.target.value)}
@@ -65,7 +67,7 @@ function LoginForm() {
         </div>
         <div>
           {/* <input className="btn" type="submit" name="submit" value="Log In" /> */}
-          <Button type="submit" name="submit" value="Log In" variant="contained">Log In</Button>
+          <Button type="submit" size="small" name="submit" value="Log In" variant="contained">Log In</Button>
         </div>
       </Stack>
     </form>
