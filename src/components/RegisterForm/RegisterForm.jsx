@@ -46,7 +46,6 @@ function RegisterForm() {
         <Stack spacing={4}>
           <div>
             <TextField
-            id="filled-basic" 
             label="username" 
             variant="filled" 
             required
@@ -56,9 +55,9 @@ function RegisterForm() {
           </div>
           <div>
             <TextField
-            id="filled-basic" 
             label="password" 
             variant="filled" 
+            type="password"
             required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
@@ -68,7 +67,6 @@ function RegisterForm() {
         {/* about the patient */}
           <div>
             <TextField
-            id="filled-basic" 
             label="who are you caring for?" 
             variant="filled" 
             required
@@ -79,10 +77,8 @@ function RegisterForm() {
           
           <div>
             <TextField
-            id="filled-basic" 
-            label="url" 
+            label="their photo" 
             variant="filled" 
-            required
             onChange={(event) => setImage(event.target.value)}
             />
                 
