@@ -9,7 +9,7 @@ import ImageUpload from '../ImageUpload/ImageUpload';
 function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [patient, setPatient] = useState('');
+  const [patientName, setPatientName] = useState('');
   const errors = useSelector((store) => store.errors);
   const patientPhoto = useSelector((store) => store.patient);
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ function RegisterForm() {
       payload: {
         username: username,
         password: password,
-        patient: patient,
+        patientName: patientName,
         patientPhoto: patientPhoto
       },
     });
@@ -61,18 +61,19 @@ function RegisterForm() {
         />
       </div>
 
+  {/* about the patient */}
       <div>
         <TextField
         id="filled-basic" 
         label="who are you caring for?" 
         variant="filled" 
         required
-        value={patient}
-        onChange={(event) => setPatient(event.target.value)}
+        value={patientName}
+        onChange={(event) => setPatientName(event.target.value)}
         />
       </div>
 
-      <div>
+      {/* <div>
         <TextField
         id="filled-basic" 
         label="their photo" 
@@ -81,7 +82,7 @@ function RegisterForm() {
         value={patientPhoto}
         onChange={(event) => setPatientPhoto(event.target.value)}
         />
-      </div>
+      </div> */}
 
         <ImageUpload />
 
