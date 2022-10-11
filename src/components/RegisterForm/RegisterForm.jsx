@@ -43,11 +43,12 @@ function RegisterForm() {
           </h3>
         )}
 
-        <Stack spacing={4}>
+        <Stack spacing={2}>
           <div>
             <TextField
             label="username" 
-            variant="filled" 
+            variant="outlined" 
+            size="small"
             required
             value={username}
             onChange={(event) => setUsername(event.target.value)}
@@ -56,8 +57,9 @@ function RegisterForm() {
           <div>
             <TextField
             label="password" 
-            variant="filled" 
+            variant="outlined" 
             type="password"
+            size="small"
             required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
@@ -68,8 +70,9 @@ function RegisterForm() {
           <div>
             <TextField
             label="who are you caring for?" 
-            variant="filled" 
+            variant="outlined" 
             required
+            size="small"
             value={patientName}
             onChange={(event) => setPatientName(event.target.value)}
             />
@@ -78,18 +81,21 @@ function RegisterForm() {
           <div>
             <TextField
             label="their photo" 
-            variant="filled" 
+            variant="outlined" 
+            size="small"
             onChange={(event) => setImage(event.target.value)}
             />
-                
-            <Button onClick={uploadImage} variant="contained">Image Preview</Button>
+          </div>
+          <div>      
+            <Button onClick={uploadImage} size="small" variant="contained">Image Preview</Button>
+          </div>
       
             {/* show image only if there is a patientPhoto set */}
             {patientPhoto && (
-              <img src={patientPhoto} className='imagePreview'></img>
+              <div>
+                <img src={patientPhoto} className='imagePreview'></img>
+              </div>
             )} 
-          </div>
-
           <div>
             <input className="btn" type="submit" name="submit" value="Register" />
           </div>
