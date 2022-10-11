@@ -4,19 +4,24 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
-import ImageUpload from '../ImageUpload/ImageUpload';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [patientName, setPatientName] = useState('');
+  const [image, setImage] = useState('');
+  const [patientPhoto, setPatientPhoto] = useState('');
   const errors = useSelector((store) => store.errors);
-  const patientPhoto = useSelector((store) => store.patient);
+  
   const dispatch = useDispatch();
+
+  const uploadImage = () => {
+    console.log('in uploadImage. here is image:', image);
+    setPatientPhoto(image);
+}
 
   const registerUser = (event) => {
     event.preventDefault();
-
     dispatch({
       type: 'REGISTER',
       payload: {
@@ -30,67 +35,70 @@ function RegisterForm() {
 
   return (
     <Container maxWidth="sm">
-    <form className="formPanel" onSubmit={registerUser}>
-      {/* <h2>Register User</h2> */}
-      {errors.registrationMessage && (
-        <h3 className="alert" role="alert">
-          {errors.registrationMessage}
-        </h3>
-      )}
+      <form className="formPanel" onSubmit={registerUser}>
 
-    <Stack spacing={4}>
-      <div>
-        <TextField
-        id="filled-basic" 
-        label="username" 
-        variant="filled" 
-        required
-        value={username}
-        onChange={(event) => setUsername(event.target.value)}
-        />
-    
-      </div>
-      <div>
-        <TextField
-        id="filled-basic" 
-        label="password" 
-        variant="filled" 
-        required
-        value={password}
-        onChange={(event) => setPassword(event.target.value)}
-        />
-      </div>
+        {errors.registrationMessage && (
+          <h3 className="alert" role="alert">
+            {errors.registrationMessage}
+          </h3>
+        )}
 
-  {/* about the patient */}
-      <div>
-        <TextField
-        id="filled-basic" 
-        label="who are you caring for?" 
-        variant="filled" 
-        required
-        value={patientName}
-        onChange={(event) => setPatientName(event.target.value)}
-        />
-      </div>
+        <Stack spacing={4}>
+          <div>
+            <TextField
+            id="filled-basic" 
+            label="username" 
+            variant="filled" 
+            required
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+            />
+          </div>
+          <div>
+            <TextField
+            id="filled-basic" 
+            label="password" 
+            variant="filled" 
+            required
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            />
+          </div>
 
-      {/* <div>
-        <TextField
-        id="filled-basic" 
-        label="their photo" 
-        variant="filled" 
-        required
-        value={patientPhoto}
-        onChange={(event) => setPatientPhoto(event.target.value)}
-        />
-      </div> */}
+        {/* about the patient */}
+          <div>
+            <TextField
+            id="filled-basic" 
+            label="who are you caring for?" 
+            variant="filled" 
+            required
+            value={patientName}
+            onChange={(event) => setPatientName(event.target.value)}
+            />
+          </div>
+          
+          <div>
+            <TextField
+            id="filled-basic" 
+            label="url" 
+            variant="filled" 
+            required
+            onChange={(event) => setImage(event.target.value)}
+            />
+                
+            <Button onClick={uploadImage} variant="contained">Image Preview</Button>
+      
+            {/* show image only if there is a patientPhoto set */}
+            {patientPhoto && (
+              <img src={patientPhoto} className='imagePreview'></img>
+            )} 
+          </div>
 
-        <ImageUpload />
-
-      <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
-      </div>
-      </Stack>
-    </form>
+          <div>
+            <input className="btn" type="submit" name="submit" value="Register" />
+          </div>
+        </Stack>
+      </form>
     </Container>
   );
 }
