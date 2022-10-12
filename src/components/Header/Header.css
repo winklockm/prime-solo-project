@@ -1,0 +1,20 @@
+.header {
+  background-color: black;
+  color: white
+}
+
+.header-large {
+  background-color: black;
+  color: white;
+  padding: 5vh;
+}
+
+.title {
+  font-weight: normal;
+  font-size: 30px;
+}
+
+.subtitle {
+  font-weight: normal;
+  font-size: 17px;
+}
