@@ -4,7 +4,8 @@ import axios from 'axios';
 // function* addNewMedProvider(action) {
 //     try{
 //         const newMedProvider = action.payload
-//         const 
+//         const medProviderRes = yield axios.post('/medteam');
+//         yield put
 //     }
 
 // }
