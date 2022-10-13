@@ -12,8 +12,9 @@ function AddNew() {
     const [specialty, setSpecialty] = useState('');
     const [clinic, setClinic] = useState('');
     const [phone, setPhone] = useState('');
-    const [nextAppointment, setNextAppointment] = useState('');
     const [portal, setPortal] = useState('');
+    const [nextAppointment, setNextAppointment] = useState('');
+    const [comments, setComments] = useState('');
 
     const dispatch = useDispatch();
 
@@ -24,8 +25,9 @@ function AddNew() {
             specialty: specialty,
             clinic: clinic,
             phone: phone,
+            portal: portal,
             nextAppointment: nextAppointment,
-            portal: portal
+            comments: comments
         }
         dispatch({
             type: 'ADD_NEW_MED_PROVIDER',
@@ -88,6 +90,16 @@ function AddNew() {
                 </div>
                 <div>
                     <TextField
+                    label="patient portal link" 
+                    variant="outlined" 
+                    size="small"
+                    value={portal}
+                    onChange={(event) => setPortal(event.target.value)}
+                    />
+                </div>
+
+                <div>
+                    <TextField
                     label="next appointment" 
                     variant="outlined" 
                     size="small"
@@ -105,16 +117,16 @@ function AddNew() {
                     renderInput={(params) => <TextField {...params} />}
                     /> */}
                 </div>
+
                 <div>
-                    <TextField
-                    label="patient portal link" 
+                <TextField
+                    label="comments" 
                     variant="outlined" 
                     size="small"
-                    value={portal}
-                    onChange={(event) => setPortal(event.target.value)}
+                    value={comments}
+                    onChange={(event) => setComments(event.target.value)}
                     />
                 </div>
-
                 {/* // BUTTON NEEDS TO POST */}
                 <Button           
                 variant="outlined" 
