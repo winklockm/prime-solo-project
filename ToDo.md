@@ -7,7 +7,7 @@ Reducers:
 -Patient reducer
 
 
-- Create medical team router
-- From medicalteam saga POST to medical team router (on save)
+X Create medical team router
+X From medicalteam saga POST to medical team router (on save)
 - Send user to details page
 - Details page uses a saga to get what was just created and renders on load
