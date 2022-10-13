@@ -24,6 +24,7 @@ import Overview from '../Overview/Overview';
 import List from '../List/List';
 import Detail from '../Detail/Detail';
 import BottomNav from '../BottomNav/BottomNav';
+import AddNew from '../AddNew/AddNew';
 
 
 import './App.css';
@@ -58,6 +59,11 @@ function App() {
           {/* // logged in shows medicalteam route with List component, else shows LoginPage */}
           <ProtectedRoute exact path="/medicalteam">
             <List />
+          </ProtectedRoute>
+
+          {/* // logged in shows medicalteam route with List component, else shows LoginPage */}
+          <ProtectedRoute exact path="/medicalteam/addnew">
+            <AddNew />
           </ProtectedRoute>
 
           {/* // logged in shows medication route with List component, else shows LoginPage */}
