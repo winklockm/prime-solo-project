@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import React, { useState } from 'react';
 // import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+import { useDispatch } from 'react-redux';
 
 function AddNew() {
 
@@ -13,6 +14,24 @@ function AddNew() {
     const [phone, setPhone] = useState('');
     const [nextAppointment, setNextAppointment] = useState('');
     const [portal, setPortal] = useState('');
+
+    const dispatch = useDispatch();
+
+    const handleClick = () => {
+        console.log('in handleClick');
+        const newMedProvider = {
+            name: name,
+            specialty: specialty,
+            clinic: clinic,
+            phone: phone,
+            nextAppointment: nextAppointment,
+            portal: portal
+        }
+        dispatch({
+            type: 'ADD_NEW_MED_PROVIDER',
+            payload: newMedProvider
+        })
+    }
 
     // use for mobile date picker
     // const handleChange = (newDate) => {
@@ -98,7 +117,12 @@ function AddNew() {
 
                 {/* // BUTTON NEEDS TO POST */}
                 <Button           
-                variant="outlined" size="small">Save</Button>
+                variant="outlined" 
+                size="small"
+                onClick={handleClick}
+                >
+                    Save
+                </Button>
 
             </Stack>
         </Container>
@@ -106,4 +130,4 @@ function AddNew() {
     )
 }
 
-export default AddNew
+export default AddNew;
