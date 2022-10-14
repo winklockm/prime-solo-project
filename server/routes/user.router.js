@@ -27,7 +27,9 @@ router.post('/register', (req, res, next) => {
     VALUES ($1, $2, $3, $4) RETURNING id`;
   pool
     .query(queryText, [username, password, patientName, patientPhoto])
-    .then(() => res.sendStatus(201))
+      .then((dbRes) => {
+        res.sendStatus(201)
+      })
     .catch((err) => {
       console.log('User registration failed: ', err);
       res.sendStatus(500);
