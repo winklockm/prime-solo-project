@@ -46,7 +46,7 @@ function RegisterForm() {
         <Stack spacing={2}>
           <div>
             <TextField
-            label="unique team name" 
+            label="username" 
             variant="outlined" 
             size="small"
             required
