@@ -5,6 +5,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Item from "../Item/Item";
 import Stack from '@mui/material/Stack';
+import Grid from '@mui/material/Unstable_Grid2';
 
 function List() {
     const dispatch = useDispatch();
@@ -29,13 +30,26 @@ function List() {
             >
                 <p className="componentTitle">This is the List component</p>
 
-                {
+                {/* {
                     medicalteam.length > 0 ?
                         <ul>
                             {medicalteam.map(provider => (
                                 <Item key={provider.id} provider={provider}/>)
                             )}
                         </ul>
+                    :
+                        <p>No medical providers</p>
+                } */}
+
+
+
+{
+                    medicalteam.length > 0 ?
+                        <Grid container spacing={2}>
+                            {medicalteam.map(provider => (
+                                <Item key={provider.id} provider={provider}/>)
+                            )}
+                        </Grid>
                     :
                         <p>No medical providers</p>
                 }
@@ -47,7 +61,31 @@ function List() {
                 >
                     Add New Provider
                 </Button>
+            <Grid container spacing={2}>
+                <Grid xs={4}>
+                    <p>HELLO</p>
+                </Grid>
+                <Grid xs={4}>
+                    <p>HELLO</p>
+                </Grid>
+                <Grid xs={4}>
+                    <p>HELLO</p>
+                </Grid>
+                <Grid xs={4}>
+                    <p>HELLO</p>
+                </Grid>
+                <Grid xs={4}>
+                    <p>HELLO</p>
+                </Grid>
+                <Grid xs={4}>
+                    <p>HELLO</p>
+                </Grid>
+            </Grid>
             </Stack>
+
+
+
+            
         </Container>
     )
 }
