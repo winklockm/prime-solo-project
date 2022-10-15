@@ -33,6 +33,13 @@ function AddNew() {
             type: 'ADD_NEW_MED_PROVIDER',
             payload: newMedProvider
         })
+        setName('');
+        setSpecialty('');
+        setClinic('');
+        setPhone('');
+        setPortal('');
+        setNextAppointment('');
+        setComments('');
     }
 
     // use for mobile date picker
