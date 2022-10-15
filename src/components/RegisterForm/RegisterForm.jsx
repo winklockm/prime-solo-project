@@ -30,7 +30,12 @@ function RegisterForm() {
         patientName: patientName,
         patientPhoto: patientPhoto
       },
-    });
+    })
+    setUsername('');
+    setPassword('');
+    setPatientName('');
+    setImage('');
+    setPatientPhoto('');
   }; // end registerUser
 
   return (
@@ -83,6 +88,7 @@ function RegisterForm() {
             label="their photo" 
             variant="outlined" 
             size="small"
+            value={image}
             onChange={(event) => setImage(event.target.value)}
             />
           </div>
