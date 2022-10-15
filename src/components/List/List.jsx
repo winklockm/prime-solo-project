@@ -20,30 +20,35 @@ function List() {
     console.log('this is medicalteam from store:', medicalteam);
 
     return (
-        <>
-            <Container maxWidth="sm">
-                <Stack
-                    direction="column"
-                    justifyContent="center"
-                    alignItems="center"
-                    spacing={2}
+        <Container maxWidth="sm">
+            <Stack
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                spacing={2}
+            >
+                <p className="componentTitle">This is the List component</p>
+
+                {
+                    medicalteam.length > 0 ?
+                        <ul>
+                            {medicalteam.map(provider => (
+                                <Item key={provider.id} provider={provider}/>)
+                            )}
+                        </ul>
+                    :
+                        <p>No medical providers</p>
+                }
+                
+                <Button
+                    onClick={() => {history.push('/medicalteam/addnew')}} 
+                    variant="outlined" 
+                    size="small"
                 >
-                    <p className="componentTitle">This is the List component</p>
-
-                    {medicalteam &&
-                    <ul>
-                        {medicalteam.map(provider => 
-                        (<div key={provider.id}><Item key={provider.id} provider={provider}/></div>)
-                        )}
-                    </ul>
-                    }
-
-                    <Button
-                    onClick={() => {history.push('/medicalteam/addnew');}} 
-                    variant="outlined" size="small">Add New Provider</Button>
-                </Stack>
-            </Container>
-        </>
+                    Add New Provider
+                </Button>
+            </Stack>
+        </Container>
     )
 }
 
