@@ -14,7 +14,7 @@ console.log('user is', user)
             <Container className='componentBox' maxWidth="sm">
                 <Stack spacing={2}>
                     <p className='componentTitle'>This is the Overview component</p>
-                    <p>You have:</p>
+                    <p>{user.patient_name} has:</p>
                     <p># medical providers</p>
                     <p># medications</p>
                     <p># insurance plans</p>
