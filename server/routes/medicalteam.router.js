@@ -6,7 +6,18 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-  // GET route code here
+  console.log('GET /medicalteam');
+  const sqlText = `
+  SELECT "id", "name", "specialty", "clinic" FROM "medprovider"
+	ORDER BY "name"; 
+  `
+  pool.query(sqlText)
+    .then(dbRes => {
+      res.send(dbRes.rows)
+    }) .catch(dbErr => {
+      console.log('Error in /medicalteam', error);
+      res.sendStatus(500)
+    })
 });
 
 /**

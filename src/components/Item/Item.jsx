@@ -1,11 +1,15 @@
 
-function Item() {
+function Item({provider}) {
 
 
 
     return (
         <>
-            <p>This is the Item component</p>
+            <ul key={provider.id}>
+                <li>{provider.name}</li>
+                <li>{provider.specialty}</li>
+                <li>{provider.clinic}</li>
+            </ul>
         </>
     )
 }

@@ -12,8 +12,25 @@ function* addNewMedProvider(action) {
     }
 }
 
+function* fetchMedicalTeam() {
+    console.log('in fetchMedicalTeam');
+    try{
+        const medicalteamRes = yield axios({
+            method: 'GET',
+            url: '/medicalteam'
+        })
+        yield put({
+            type: 'SET_MEDICAL_TEAM',
+            payload: medicalteamRes.data
+        })
+    } catch(error) {
+        console.log('error getting medical team:', error);
+    }
+}
+
 function* medicalteamSaga() {
     yield takeLatest('ADD_NEW_MED_PROVIDER', addNewMedProvider);
+    yield takeLatest('FETCH_MEDICAL_TEAM', fetchMedicalTeam)
 }
 
 export default medicalteamSaga;
