@@ -66,6 +66,11 @@ function App() {
             <AddNew />
           </ProtectedRoute>
 
+          {/* // logged in shows medicalteam route with List component, else shows LoginPage */}
+          <ProtectedRoute exact path="/medicalteam/:id">
+            <Detail />
+          </ProtectedRoute>
+
           {/* // logged in shows medication route with List component, else shows LoginPage */}
           <ProtectedRoute exact path="/medication">
             <List />
