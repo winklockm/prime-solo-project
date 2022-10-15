@@ -13,9 +13,10 @@ router.get('/', (req, res) => {
   `
   pool.query(sqlText)
     .then(dbRes => {
+      console.log('dbRes.rows is:', dbRes.rows);
       res.send(dbRes.rows)
     }) .catch(dbErr => {
-      console.log('Error in /medicalteam', error);
+      console.log('Error in /medicalteam', dbErr);
       res.sendStatus(500)
     })
 });
