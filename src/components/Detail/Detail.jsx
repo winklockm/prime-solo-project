@@ -9,15 +9,19 @@ function Detail() {
     const history = useHistory();
     const dispatch = useDispatch();
     const medicalProvider = useSelector(store => store.medicalteam.medicalteamDetailReducer)
+    const medicalProviderId = params.id
 
     useEffect(() => {
-        const medicalProviderId = params.id
         dispatch({
             type: 'FETCH_MEDICAL_TEAM_DETAIL',
             payload: medicalProviderId
         })
     }, [])
 
+    const handleEdit = () => {
+        console.log('in handleEdit');
+        history.push(`/medicalteam/detail/${medicalProviderId}/edit`);
+    }
 
     const handleBack = () => {
         console.log('in handleBack');
@@ -41,6 +45,11 @@ console.log('this is medicalProvider from store:', medicalProvider)
                 <p>No details</p>
             }
             
+            {/* Button to navigate to edit page */}
+            <div>
+                <Button onClick={handleEdit} size="small" variant="contained">Edit</Button>
+            </div>
+
             <div>
                 <Button onClick={handleBack} size="small" variant="contained">Back</Button>
             </div>

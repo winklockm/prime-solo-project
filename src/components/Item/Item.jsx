@@ -8,7 +8,7 @@ function Item({provider}) {
 const handleClick = () => {
     console.log('in handleClick. Provider.id is:', provider.id);
     history.push(`/medicalteam/detail/${provider.id}`);
-}
+} 
 
     return (
         <>
