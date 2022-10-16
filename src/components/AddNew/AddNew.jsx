@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 // import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { useDispatch } from 'react-redux';
 
@@ -17,6 +18,7 @@ function AddNew() {
     const [comments, setComments] = useState('');
 
     const dispatch = useDispatch();
+    const {id} = useParams();
 
     const handleClick = () => {
         console.log('in handleClick');
@@ -33,6 +35,16 @@ function AddNew() {
             type: 'ADD_NEW_MED_PROVIDER',
             payload: newMedProvider
         })
+        // clear inputs
+        setName('');
+        setSpecialty('');
+        setClinic('');
+        setPhone('');
+        setPortal('');
+        setNextAppointment('');
+        setComments('');
+        // navigate user to the details page for the newly created medical provider
+
     }
 
     // use for mobile date picker
@@ -127,7 +139,6 @@ function AddNew() {
                     onChange={(event) => setComments(event.target.value)}
                     />
                 </div>
-                {/* // BUTTON NEEDS TO POST */}
                 <Button           
                 variant="outlined" 
                 size="small"

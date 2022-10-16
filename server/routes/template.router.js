@@ -7,6 +7,11 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   // GET route code here
+  const sqlText = `
+    SELECT * FROM "medprovider"
+      WHERE "patient_id" = $1
+  `
+  const sqlValues = [req.user.id]
 });
 
 /**
@@ -17,3 +22,12 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router;
+
+// 
+// function getPatientID(userId) {
+//   pool.query('SELECT patient_id FROM user_patient WHERE user_id = $1', [userId])
+//     .then((dbRes) => {
+//       return dbRes.rows[0].patient_id
+//     })
+
+// }

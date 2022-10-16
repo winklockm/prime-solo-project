@@ -3,10 +3,46 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
- * GET route template
+ * GET BASIC INFO ABOUT ALL MEDICAL PROVIDERS
  */
 router.get('/', (req, res) => {
-  // GET route code here
+  console.log('GET /medicalteam');
+  console.log('this is req.user.patient_id:', req.user.patient_id);
+  const sqlText = `
+    SELECT "id", "name", "specialty", "clinic" FROM "medprovider"
+      WHERE "patient_id"=$1
+        ORDER BY "name";`
+  ;
+  const sqlValues = [req.user.patient_id]
+  pool.query(sqlText, sqlValues)
+    .then(dbRes => {
+      console.log('dbRes.rows is:', dbRes.rows);
+      res.send(dbRes.rows)
+    }) .catch(dbErr => {
+      console.log('Error in /medicalteam', dbErr);
+      res.sendStatus(500)
+    })
+});
+
+
+/**
+ * GET DETAILED INFO ABOUT ONE MEDICAL PROVIDER
+ */
+ router.get('/:id', (req, res) => {
+  console.log('GET /medicalteam/:id');
+  const sqlText = `
+  SELECT * FROM "medprovider"
+	  WHERE "id"=$1; 
+  `
+  const sqlValues = [req.params.id]
+  pool.query(sqlText, sqlValues)
+    .then(dbRes => {
+      console.log('dbRes.rows[0] is:', dbRes.rows[0]);
+      res.send(dbRes.rows[0])
+    }) .catch(dbErr => {
+      console.log('Error in /medicalteam/:id:', dbErr);
+      res.sendStatus(500)
+    })
 });
 
 /**
@@ -25,8 +61,8 @@ router.post('/', (req, res) => {
 
     pool.query(queryText, queryValues)
         .then(() => {res.sendStatus(201);})
-        .catch(error => {
-            console.log('Error adding new medical provider:', error);
+        .catch(dbErr => {
+            console.log('Error adding new medical provider:', dbErr);
             res.sendStatus(500);
         });
 });

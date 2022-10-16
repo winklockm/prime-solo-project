@@ -10,16 +10,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
-import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-
 import Overview from '../Overview/Overview';
 import List from '../List/List';
 import Detail from '../Detail/Detail';
@@ -61,9 +55,14 @@ function App() {
             <List />
           </ProtectedRoute>
 
-          {/* // logged in shows medicalteam route with List component, else shows LoginPage */}
+          {/* // logged in shows medicalteam route with AddNew component, else shows LoginPage */}
           <ProtectedRoute exact path="/medicalteam/addnew">
             <AddNew />
+          </ProtectedRoute>
+
+          {/* // logged in shows medicalteam route with Detail component, else shows LoginPage */}
+          <ProtectedRoute exact path="/medicalteam/detail/:id">
+            <Detail />
           </ProtectedRoute>
 
           {/* // logged in shows medication route with List component, else shows LoginPage */}
@@ -71,7 +70,7 @@ function App() {
             <List />
           </ProtectedRoute>
 
-          {/* // logged in shows medication route with List component, else shows LoginPage */}
+          {/* // logged in shows insurance route with List component, else shows LoginPage */}
           <ProtectedRoute exact path="/insurance">
             <List />
           </ProtectedRoute>
