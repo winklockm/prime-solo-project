@@ -10,7 +10,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 function List() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const medicalteam = useSelector(store => store.medicalteam);
+    const medicalteam = useSelector(store => store.medicalteam.medicalteamReducer);
 
     useEffect(() => {
         dispatch({
