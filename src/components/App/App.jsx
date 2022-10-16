@@ -55,14 +55,19 @@ function App() {
             <List />
           </ProtectedRoute>
 
-          {/* // logged in shows medicalteam route with AddNew component, else shows LoginPage */}
+          {/* // logged in shows medicalteam/addnew route with AddNew component, else shows LoginPage */}
           <ProtectedRoute exact path="/medicalteam/addnew">
             <AddNew />
           </ProtectedRoute>
 
-          {/* // logged in shows medicalteam route with Detail component, else shows LoginPage */}
+          {/* // logged in shows medicalteam/detail/:id route with Detail component, else shows LoginPage */}
           <ProtectedRoute exact path="/medicalteam/detail/:id">
             <Detail />
+          </ProtectedRoute>
+
+          {/* // logged in shows medicalteam/detail/:id/edit route with Detail component, else shows LoginPage */}
+          <ProtectedRoute exact path="/medicalteam/detail/:id/edit">
+            <h1>Here is the edit page</h1>
           </ProtectedRoute>
 
           {/* // logged in shows medication route with List component, else shows LoginPage */}
