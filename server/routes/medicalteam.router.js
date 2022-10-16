@@ -7,11 +7,14 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   console.log('GET /medicalteam');
+  console.log('this is req.user.patient_id:', req.user.patient_id);
   const sqlText = `
-  SELECT "id", "name", "specialty", "clinic" FROM "medprovider"
-	ORDER BY "name"; 
-  `
-  pool.query(sqlText)
+    SELECT "id", "name", "specialty", "clinic" FROM "medprovider"
+      WHERE "patient_id"=$1
+        ORDER BY "name";`
+  ;
+  const sqlValues = [req.user.patient_id]
+  pool.query(sqlText, sqlValues)
     .then(dbRes => {
       console.log('dbRes.rows is:', dbRes.rows);
       res.send(dbRes.rows)
