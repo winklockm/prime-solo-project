@@ -61,26 +61,6 @@ function List() {
                 >
                     Add New Provider
                 </Button>
-            <Grid container spacing={2}>
-                <Grid xs={4}>
-                    <p>HELLO</p>
-                </Grid>
-                <Grid xs={4}>
-                    <p>HELLO</p>
-                </Grid>
-                <Grid xs={4}>
-                    <p>HELLO</p>
-                </Grid>
-                <Grid xs={4}>
-                    <p>HELLO</p>
-                </Grid>
-                <Grid xs={4}>
-                    <p>HELLO</p>
-                </Grid>
-                <Grid xs={4}>
-                    <p>HELLO</p>
-                </Grid>
-            </Grid>
             </Stack>
 
 
