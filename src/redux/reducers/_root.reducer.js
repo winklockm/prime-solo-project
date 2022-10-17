@@ -12,7 +12,7 @@ import medicalteam from './medicalteam.reducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-  medicalteam, // contains medicalteamReducer and medicalteamDetailReducer
+  medicalteam, // contains medicalteamReducer, medicalteamDetailReducer, medicalteamToEditReducer
 });
 
 export default rootReducer;

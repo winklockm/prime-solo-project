@@ -19,6 +19,7 @@ import List from '../List/List';
 import Detail from '../Detail/Detail';
 import BottomNav from '../BottomNav/BottomNav';
 import AddNew from '../AddNew/AddNew';
+import EditDetail from '../EditDetail/EditDetail';
 
 
 import './App.css';
@@ -67,7 +68,7 @@ function App() {
 
           {/* // logged in shows medicalteam/detail/:id/edit route with Detail component, else shows LoginPage */}
           <ProtectedRoute exact path="/medicalteam/detail/:id/edit">
-            <h1>Here is the edit page</h1>
+            <EditDetail />
           </ProtectedRoute>
 
           {/* // logged in shows medication route with List component, else shows LoginPage */}
