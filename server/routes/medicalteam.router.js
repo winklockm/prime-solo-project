@@ -98,4 +98,32 @@ const sqlValues = [req.body.name, req.body.specialty, req.body.clinic, req.body.
       });
 });
 
+// DELETE ROUTE TO DELETE ONE MEDICAL PROVIDER
+// router.delete('/:id'), (req, res) => {
+//   const idToDelete = req.params.id;
+//   console.log('in delete. id to delete is:', idToDelete);
+//   const sqlText = `
+//   DELETE from "medprovider"
+// 	  WHERE "id" = $1;
+//   `;
+//   const sqlValues = [idToDelete];
+//   pool.query(sqlText, sqlValues)
+//     .then((result) => {
+//       res.sendStatus(200);
+//     })
+//     .catch((error) => {
+//       console.log('Error deleting med provider:', error);
+//       res.sendStatus(500);
+//     })
+// }
+
+router.delete('/:id', (req, res) => {
+  pool.query('DELETE FROM "medprovider" WHERE id=$1', [req.params.id]).then((result) => {
+      res.sendStatus(200);
+  }).catch((error) => {
+      console.log('Error DELETE /medicalteam', error);
+      res.sendStatus(500);
+  })
+});
+
 module.exports = router;

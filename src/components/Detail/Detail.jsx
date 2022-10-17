@@ -51,6 +51,14 @@ function EditDetail() {
         toggleEdit();
     }
 
+    const handleDelete = () => {
+        console.log('in handleDelete');
+        dispatch({
+            type: 'DELETE_MED_TEAM',
+            payload: params.id
+        })
+    }
+
     // return to medical team list
     const handleBack = () => {
         console.log('in handleBack');
@@ -77,6 +85,8 @@ function EditDetail() {
                     <Button onClick={handleCancel}>Cancel</Button>
                 </div>
                 }
+
+                <Button onClick={handleDelete} size="small" variant="contained">Delete</Button>
 
                 {medteamToEdit && 
                     <form>
@@ -160,76 +170,3 @@ function EditDetail() {
 }
 
 export default EditDetail;
-
-
-
-
-
-
-
-
-// BELOW WORKS
-
-// import { useEffect, useState } from 'react';
-// import { useParams, useHistory } from 'react-router-dom';
-// import { useDispatch, useSelector} from 'react-redux';
-// import Button from '@mui/material/Button';
-// import TextField from '@mui/material/TextField';
-
-// function Detail() {
-//     const params = useParams();
-//     const history = useHistory();
-//     const dispatch = useDispatch();
-//     const medicalProvider = useSelector(store => store.medicalteam.medicalteamDetailReducer)
-//     const medicalProviderId = params.id
-
-//     const comments = useState('');
-
-//     useEffect(() => {
-//         dispatch({
-//             type: 'FETCH_MEDICAL_TEAM_DETAIL',
-//             payload: medicalProviderId
-//         })
-//     }, [])
-
-//     const handleEdit = () => {
-//         console.log('in handleEdit');
-//         history.push(`/medicalteam/detail/${medicalProviderId}/edit`);
-//     }
-
-//     const handleBack = () => {
-//         console.log('in handleBack');
-//         history.push(`/medicalteam`);
-//     }
-
-// console.log('this is medicalProvider from store:', medicalProvider)
-//     return (
-//         <>
-//             {medicalProvider ?
-//                 <div>
-//                     <p>{medicalProvider.name}</p>
-//                     <p>{medicalProvider.specialty}</p>
-//                     <p>{medicalProvider.clinic}</p>
-//                     <p>{medicalProvider.phone}</p>
-//                     <p>{medicalProvider.portal}</p>
-//                     <p>{medicalProvider.next_appointment}</p>
-//                     <p>{medicalProvider.comments}</p>
-//                 </div>
-//             :
-//                 <p>No details</p>
-//             }
-
-
-//             {/* Button to navigate to edit page
-//             <div>
-//                 <Button onClick={handleEdit} size="small" variant="contained">Edit</Button>
-//             </div> */}
-
-//             <div>
-//                 <Button onClick={handleBack} size="small" variant="contained">Back</Button>
-//             </div>
-//         </>
-//     )
-// }
-
-// export default Detail;

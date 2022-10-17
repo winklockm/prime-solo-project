@@ -46,25 +46,6 @@ function* fetchMedicalTeamDetail(action) {
     }
 }
 
-
-function* fetchMedicalTeamToEdit(action) {
-    const medicalProviderId = action.payload
-    console.log('in fetchMedicalTeamToEdit. medicalProviderId is:', medicalProviderId);
-    try{
-        const medTeamToEditRes = yield axios({
-            method: 'GET',
-            url: `/medicalteam/${medicalProviderId}`
-        })
-        yield put({
-            type: `SET_MEDICAL_TEAM_TO_EDIT`,
-            payload: medTeamToEditRes.data
-        })
-
-    } catch(error) {
-        console.log('error getting medical team details:', error);
-    }
-}
-
 function* updateMedTeam(action) {
     try{
         const medteamToUpdate = action.payload;
@@ -83,12 +64,27 @@ function* updateMedTeam(action) {
     }
 }
 
+function* deleteMedTeam(action) {
+    try{
+        const medteamToDelete = action.payload;
+        console.log('in deleteMedTeam. medteamToDelete is:', medteamToDelete);
+        yield axios({
+            method: 'DELETE',
+            url: `/medicalteam/${medteamToDelete}`,
+            data: medteamToDelete
+        })
+    }
+    catch(err) {
+        console.log('Error deleting medical provider:', err);
+    }
+}
 
 function* medicalteamSaga() {
     yield takeLatest('ADD_NEW_MED_PROVIDER', addNewMedProvider);
     yield takeLatest('FETCH_MEDICAL_TEAM', fetchMedicalTeam);
     yield takeLatest('FETCH_MEDICAL_TEAM_DETAIL', fetchMedicalTeamDetail);
     yield takeLatest('UPDATE_MEDTEAM', updateMedTeam);
+    yield takeLatest('DELETE_MED_TEAM', deleteMedTeam)
 }
 
 export default medicalteamSaga;
