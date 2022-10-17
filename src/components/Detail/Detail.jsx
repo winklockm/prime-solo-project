@@ -57,6 +57,7 @@ function EditDetail() {
             type: 'DELETE_MED_TEAM',
             payload: params.id
         })
+        history.push(`/medicalteam`)
     }
 
     // return to medical team list
