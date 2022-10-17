@@ -66,11 +66,6 @@ function App() {
             <Detail />
           </ProtectedRoute>
 
-          {/* // logged in shows medicalteam/detail/:id/edit route with Detail component, else shows LoginPage */}
-          <ProtectedRoute exact path="/medicalteam/detail/:id/edit">
-            <EditDetail />
-          </ProtectedRoute>
-
           {/* // logged in shows medication route with List component, else shows LoginPage */}
           <ProtectedRoute exact path="/medication">
             <List />
