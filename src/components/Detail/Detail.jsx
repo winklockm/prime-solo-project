@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
+import Container from '@mui/material/Container';
 
 function EditDetail() {
     const params = useParams();
@@ -13,14 +15,24 @@ function EditDetail() {
     const [readOnly, setReadOnly] = useState(true);
 
     useEffect(() => {
-      dispatch({
-        type: 'FETCH_MEDICAL_TEAM_DETAIL',
-        payload: params.id
-      })
+        getMedTeam();
     }, [params.id])
-  
-  
-    const handleConfirm = (e) => {
+
+    // fetch the medical provider
+    const getMedTeam = () => {
+        dispatch({
+            type: 'FETCH_MEDICAL_TEAM_DETAIL',
+            payload: params.id
+          })
+    }
+    
+    // toggles input fields between edit and read only
+    const toggleEdit = () => {
+      setReadOnly(!readOnly);
+    }
+
+    // update the medical provider
+    const handleSave = (e) => {
       e.preventDefault();
       // dispatch updated medical team object to a saga function:
       dispatch({
@@ -30,97 +42,120 @@ function EditDetail() {
       history.push(`/medicalteam/detail/${params.id}`)
     }
   
+    // cancel editing of medical provider
     const handleCancel = (e) => {
       e.preventDefault();
-      history.push('/')
+        // discard changes
+        getMedTeam();
+        // make fields read only
+        toggleEdit();
     }
 
-    const toggleEdit = () => {
-      // set state
-      setReadOnly(!readOnly);
+    // return to medical team list
+    const handleBack = () => {
+        console.log('in handleBack');
+        history.push(`/medicalteam`);
     }
 
-console.log('here is medteamToEdit:', medteamToEdit);
+    console.log('here is medteamToEdit:', medteamToEdit);
 
     return (
+        <Container maxWidth="sm">
+            <Stack
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            spacing={2}
+            >
 
-        <>
-        <Button onClick={toggleEdit} size="small" variant="contained">
-          {readOnly ?
-            <p>Make it Editable</p>
-          :
-            <p>Make it ReadOnly</p>
-          }
-        </Button>
+                {/* show edit button while in read only mode, otherwise show save and cancel buttons while editing */}
+                { readOnly ?
+                    <Button onClick={toggleEdit} size="small" variant="contained">Edit</Button>
+                :
+                <div>
+                    <Button onClick={handleSave}>Save</Button>
+                    <Button onClick={handleCancel}>Cancel</Button>
+                </div>
+                }
 
-        {medteamToEdit && 
-        
-        <form>
+                {medteamToEdit && 
+                    <form>
+                        <Stack
+                        direction="column"
+                        justifyContent="center"
+                        alignItems="center"
+                        spacing={2}
+                        >
+                            {/* text fields toggle between read only and edit */}
+                            <TextField
+                            id="outlined-read-only-input"
+                            label="name"
+                            size="small"
+                            value={medteamToEdit.name || ''}
+                            InputProps={{readOnly: readOnly}}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_NAME', payload: e.target.value})}
+                            />
+                            <TextField
+                            id="outlined-read-only-input"
+                            label="specialty"
+                            size="small"
+                            value={medteamToEdit.specialty || ''}
+                            InputProps={{readOnly: readOnly}}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_SPECIALTY', payload: e.target.value})}
+                            />
+                            <TextField
+                            id="outlined-read-only-input"
+                            label="clinic"
+                            size="small"
+                            value={medteamToEdit.clinic || ''}
+                            InputProps={{readOnly: readOnly}}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_CLINIC', payload: e.target.value})}
+                            />
+                            <TextField
+                            id="outlined-read-only-input"
+                            label="phone"
+                            size="small"
+                            value={medteamToEdit.phone || ''}
+                            InputProps={{readOnly: readOnly}}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_PHONE', payload: e.target.value})}
+                            />
+                            <TextField
+                            id="outlined-read-only-input"
+                            label="patient portal"
+                            size="small"
+                            value={medteamToEdit.portal || ''}
+                            InputProps={{readOnly: readOnly}}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_PORTAL', payload: e.target.value})}
+                            />
+                            <TextField type="text"
+                            id="outlined-read-only-input"
+                            label="next appointment"
+                            size="small"
+                            value={medteamToEdit.next_appointment || ''}
+                            InputProps={{readOnly: readOnly}}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_NEXT_APPOINTMENT', payload: e.target.value})}
+                            />
+                            <TextField type="text"
+                            id="outlined-read-only-input"
+                            label="comments"
+                            size="small"
+                            value={medteamToEdit.comments || ''}
+                            InputProps={{readOnly: readOnly}}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_COMMENTS', payload: e.target.value})}
+                            />
+                        </Stack>
+                    </form>
+                }
 
-        <TextField
-          id="outlined-read-only-input"
-          label="name"
-          size="small"
-          value={medteamToEdit.name || ''}
-          InputProps={{readOnly: readOnly}}
-          onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_NAME', payload: e.target.value})}
-        />
-      
-        <div>
-        <TextField
-          id="outlined-read-only-input"
-          label="specialty"
-          size="small"
-          value={medteamToEdit.specialty || ''}
-          InputProps={{readOnly: readOnly}}
-          onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_SPECIALTY', payload: e.target.value})}
-        />
-        </div>
-        <TextField
-          id="outlined-read-only-input"
-          label="clinic"
-          size="small"
-          value={medteamToEdit.clinic || ''}
-          InputProps={{readOnly: readOnly}}
-          onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_CLINIC', payload: e.target.value})}
-        />
-        <TextField
-          id="outlined-read-only-input"
-          label="phone"
-          size="small"
-          value={medteamToEdit.phone || ''}
-          InputProps={{readOnly: readOnly}}
-          onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_PHONE', payload: e.target.value})}
-        />
-        <TextField
-          id="outlined-read-only-input"
-          label="patient portal"
-          size="small"
-          value={medteamToEdit.portal || ''}
-          InputProps={{readOnly: readOnly}}
-          onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_PORTAL', payload: e.target.value})}
-        />
-        <TextField type="text"
-          id="outlined-read-only-input"
-          label="next appointment"
-          size="small"
-          value={medteamToEdit.next_appointment || ''}
-          InputProps={{readOnly: readOnly}}
-          onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_NEXT_APPOINTMENT', payload: e.target.value})}
-        />
-        <TextField type="text"
-          id="outlined-read-only-input"
-          label="comments"
-          size="small"
-          value={medteamToEdit.comments || ''}
-          InputProps={{readOnly: readOnly}}
-          onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_COMMENTS', payload: e.target.value})}
-        />
-        <button onClick={handleConfirm}>Confirm Changes</button>
-        <button onClick={handleCancel}>Cancel</button>
-        </form>
-        }
-        </>
+                {/* disable back button while editing */}
+                { readOnly ?
+                    <Button onClick={handleBack} size="small" variant="contained">Back</Button>
+                :
+                <Button onClick={handleBack} size="small" variant="contained" disabled>Back</Button>
+                }
+                 
+             </Stack>
+        </Container>
     );
 }
 

@@ -19,7 +19,6 @@ import List from '../List/List';
 import Detail from '../Detail/Detail';
 import BottomNav from '../BottomNav/BottomNav';
 import AddNew from '../AddNew/AddNew';
-import EditDetail from '../EditDetail/EditDetail';
 
 
 import './App.css';
