@@ -35,5 +35,4 @@ const medicalteamDetailReducer = (state = [], action) => {
 export default combineReducers({
   medicalteamReducer,
   medicalteamDetailReducer,
-  // medicalteamToEditReducer
 }) ;
