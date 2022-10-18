@@ -42,8 +42,7 @@ function LoginForm() {
 
       <Stack spacing={4}>
         <div>
-          {/* <p className='loginLabel'>username</p> */}
-          <TextField 
+          <TextField
           label="username" 
           variant="outlined" 
           size="small"
@@ -53,7 +52,6 @@ function LoginForm() {
           />
         </div>
         <div>
-          {/* <p className='loginLabel'>password</p> */}
           <TextField
           label="password" 
           type="password"
@@ -65,7 +63,6 @@ function LoginForm() {
         />          
         </div>
         <div>
-          {/* <input className="btn" type="submit" name="submit" value="Log In" /> */}
           <Button type="submit" size="small" name="submit" value="Log In" variant="contained">Log In</Button>
         </div>
       </Stack>

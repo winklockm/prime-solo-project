@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import Item from "../Item/Item";
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Unstable_Grid2';
+import './List.css';
 
 function List() {
     const dispatch = useDispatch();
@@ -21,33 +22,28 @@ function List() {
     console.log('this is medicalteam from store:', medicalteam);
 
     return (
-        <Container maxWidth="sm">
+        <Container className='listContainer' maxWidth="sm">
             <Stack
+                className='listStack'
                 direction="column"
                 justifyContent="center"
                 alignItems="center"
                 spacing={2}
             >
-                <p className="componentTitle">This is the List component</p>
+                <p className="listComponentTitle">Medical Providers</p>
 
-                {/* {
+                {
                     medicalteam.length > 0 ?
-                        <ul>
+                        <Grid 
+                        className='listGrid'
+                        container 
+                        alignItems="stretch"
+                        spacing={2}>
                             {medicalteam.map(provider => (
-                                <Item key={provider.id} provider={provider}/>)
-                            )}
-                        </ul>
-                    :
-                        <p>No medical providers</p>
-                } */}
-
-
-
-{
-                    medicalteam.length > 0 ?
-                        <Grid container spacing={2}>
-                            {medicalteam.map(provider => (
-                                <Item key={provider.id} provider={provider}/>)
+                                <Item 
+                                className='listItem'
+                                key={provider.id} 
+                                provider={provider}/>)
                             )}
                         </Grid>
                     :
@@ -62,10 +58,6 @@ function List() {
                     Add New Provider
                 </Button>
             </Stack>
-
-
-
-            
         </Container>
     )
 }

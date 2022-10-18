@@ -10,6 +10,10 @@ import Paper from '@mui/material/Paper';
 import {useHistory} from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import Container from '@mui/material/Container';
+import HomeIcon from '@mui/icons-material/Home';
+import Diversity3Icon from '@mui/icons-material/Diversity3';
+import MedicationIcon from '@mui/icons-material/Medication';
+import NoteIcon from '@mui/icons-material/Note';
 
 function BottomNav() {
     const [value, setValue] = React.useState();
@@ -64,10 +68,10 @@ function BottomNav() {
                     changePage(newValue);
                   }}
                   >
-                  <BottomNavigationAction label="Home" icon={<RestoreIcon />} />
-                  <BottomNavigationAction label="Med Team" icon={<FavoriteIcon />} />
-                  <BottomNavigationAction label="Medication" icon={<ArchiveIcon />} />
-                  <BottomNavigationAction label="Insurance" icon={<ArchiveIcon />} />
+                  <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+                  <BottomNavigationAction label="Med Team" icon={<Diversity3Icon />} />
+                  <BottomNavigationAction label="Medication" icon={<MedicationIcon />} />
+                  <BottomNavigationAction label="Insurance" icon={<NoteIcon />} />
                 </BottomNavigation>
               </Paper>
             </Box>
