@@ -49,18 +49,20 @@ router.get('/', (req, res) => {
  * POST - ADD MEDICAL PROVIDER
  */
 router.post('/', (req, res) => {
+    console.log('this is req.user.patient_id:', req.user.patient_id);
     let newMedProvider = req.body;
     console.log('Adding new med provider. newMedProvider is:', newMedProvider);
 
     let queryText = `
-    INSERT INTO "medprovider" ("name", "specialty", "clinic", "phone", "portal", "next_appointment", "comments")
-	    VALUES ($1, $2, $3, $4, $5, $6, $7);
+    INSERT INTO "medprovider" ("patient_id", "name", "specialty", "clinic", "phone", "portal", "next_appointment", "comments")
+	    VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
     `;
 
-    let queryValues = [newMedProvider.name, newMedProvider.specialty, newMedProvider.clinic, newMedProvider.phone, newMedProvider.portal, newMedProvider.nextAppointment, newMedProvider.comments];
+    let queryValues = [req.user.patient_id, newMedProvider.name, newMedProvider.specialty, newMedProvider.clinic, newMedProvider.phone, newMedProvider.portal, newMedProvider.nextAppointment, newMedProvider.comments];
 
     pool.query(queryText, queryValues)
-        .then(() => {res.sendStatus(201);})
+        .then(() => {
+          res.sendStatus(201);})
         .catch(dbErr => {
             console.log('Error adding new medical provider:', dbErr);
             res.sendStatus(500);

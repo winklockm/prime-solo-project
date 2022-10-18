@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 // import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { useDispatch } from 'react-redux';
 
@@ -17,6 +17,7 @@ function AddNew() {
     const [nextAppointment, setNextAppointment] = useState('');
     const [comments, setComments] = useState('');
 
+    const history = useHistory();
     const dispatch = useDispatch();
     const {id} = useParams();
 
@@ -43,8 +44,8 @@ function AddNew() {
         setPortal('');
         setNextAppointment('');
         setComments('');
-        // navigate user to the details page for the newly created medical provider
-
+        // navigate user to the list page after adding new provider
+        history.push('/medicalteam');
     }
 
     // use for mobile date picker
