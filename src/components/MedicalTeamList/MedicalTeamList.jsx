@@ -9,9 +9,9 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 import AddIcon from '@mui/icons-material/Add';
 
-import './List.css';
+import './MedicalTeamList.css';
 
-function List() {
+function MedicalTeamList() {
     const dispatch = useDispatch();
     const history = useHistory();
     const medicalteam = useSelector(store => store.medicalteam.medicalteamReducer);
@@ -60,7 +60,7 @@ function List() {
     )
 }
 
-export default List;
+export default MedicalTeamList;
 
 
 

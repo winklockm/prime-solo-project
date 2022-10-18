@@ -15,10 +15,11 @@ import UserPage from '../UserPage/UserPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Overview from '../Overview/Overview';
-import List from '../List/List';
+
 import Detail from '../Detail/Detail';
 import BottomNav from '../BottomNav/BottomNav';
 import AddNew from '../AddNew/AddNew';
+import MedicalTeamList from '../MedicalTeamList/MedicalTeamList';
 
 
 import './App.css';
@@ -52,7 +53,7 @@ function App() {
 
           {/* // logged in shows medicalteam route with List component, else shows LoginPage */}
           <ProtectedRoute exact path="/medicalteam">
-            <List />
+            <MedicalTeamList />
           </ProtectedRoute>
 
           {/* // logged in shows medicalteam/addnew route with AddNew component, else shows LoginPage */}
@@ -67,12 +68,12 @@ function App() {
 
           {/* // logged in shows medication route with List component, else shows LoginPage */}
           <ProtectedRoute exact path="/medication">
-            <List />
+            <MedicalTeamList />
           </ProtectedRoute>
 
           {/* // logged in shows insurance route with List component, else shows LoginPage */}
           <ProtectedRoute exact path="/insurance">
-            <List />
+            <MedicalTeamList />
           </ProtectedRoute>
 
           <Route exact path="/login">
