@@ -99,6 +99,7 @@ function EditDetail() {
                         >
                             {/* text fields toggle between read only and edit */}
                             <TextField
+                            multiline
                             id="outlined-read-only-input"
                             label="name"
                             size="small"
@@ -107,6 +108,7 @@ function EditDetail() {
                             onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_NAME', payload: e.target.value})}
                             />
                             <TextField
+                            multiline
                             id="outlined-read-only-input"
                             label="specialty"
                             size="small"
@@ -115,6 +117,7 @@ function EditDetail() {
                             onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_SPECIALTY', payload: e.target.value})}
                             />
                             <TextField
+                            multiline
                             id="outlined-read-only-input"
                             label="clinic"
                             size="small"
@@ -123,6 +126,7 @@ function EditDetail() {
                             onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_CLINIC', payload: e.target.value})}
                             />
                             <TextField
+                            multiline
                             id="outlined-read-only-input"
                             label="phone"
                             size="small"
@@ -131,6 +135,7 @@ function EditDetail() {
                             onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_PHONE', payload: e.target.value})}
                             />
                             <TextField
+                            multiline
                             id="outlined-read-only-input"
                             label="patient portal"
                             size="small"
@@ -138,7 +143,8 @@ function EditDetail() {
                             InputProps={{readOnly: readOnly}}
                             onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_PORTAL', payload: e.target.value})}
                             />
-                            <TextField type="text"
+                            <TextField
+                            multiline
                             id="outlined-read-only-input"
                             label="next appointment"
                             size="small"
@@ -146,7 +152,8 @@ function EditDetail() {
                             InputProps={{readOnly: readOnly}}
                             onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_NEXT_APPOINTMENT', payload: e.target.value})}
                             />
-                            <TextField type="text"
+                            <TextField
+                            multiline
                             id="outlined-read-only-input"
                             label="comments"
                             size="small"
