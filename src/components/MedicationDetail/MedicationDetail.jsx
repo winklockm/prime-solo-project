@@ -32,40 +32,40 @@ function MedicationDetail() {
         setReadOnly(!readOnly);
     }
 
-        // update the medication
-        const handleSave = (e) => {
-            e.preventDefault();
-            // dispatch updated medical team object to a saga function:
-            dispatch({
-              type: 'UPDATE_MEDICATION',
-              payload: medicationToEdit
-            })
-            history.push(`/medication/detail/${params.id}`)
-          }
+    // update the medication
+    const handleSave = (e) => {
+        e.preventDefault();
+        // dispatch updated medical team object to a saga function:
+        dispatch({
+            type: 'UPDATE_MEDICATION',
+            payload: medicationToEdit
+        })
+        history.push(`/medication/detail/${params.id}`)
+    }
 
-        // cancel editing of medication
-        const handleCancel = (e) => {
-            e.preventDefault();
-            // discard changes
-            getMedication();
-            // make fields read only
-            toggleEdit();
-        }
+    // cancel editing of medication
+    const handleCancel = (e) => {
+        e.preventDefault();
+        // discard changes
+        getMedication();
+        // make fields read only
+        toggleEdit();
+    }
   
-        const handleDelete = () => {
-            console.log('in handleDelete');
-            dispatch({
-                type: 'DELETE_MEDICATION',
-                payload: params.id
-            })
-            history.push(`/medication`)
-        }
+    const handleDelete = () => {
+        console.log('in handleDelete');
+        dispatch({
+            type: 'DELETE_MEDICATION',
+            payload: params.id
+        })
+        history.push(`/medication`)
+    }
 
-            // return to medical team list
-        const handleBack = () => {
-            console.log('in handleBack');
-            history.push(`/medication`);
-        }
+    // return to medical team list
+    const handleBack = () => {
+        console.log('in handleBack');
+        history.push(`/medication`);
+    }
 
     return (
         <Container maxWidth="sm">

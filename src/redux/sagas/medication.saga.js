@@ -71,7 +71,7 @@ function* deleteMedication(action) {
         yield axios({
             method: 'DELETE',
             url: `/medication/${medicationToDelete}`,
-            data: medteamToDelete
+            data: medicationToDelete
         })
     }
     catch(err) {
