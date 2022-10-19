@@ -1,14 +1,17 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import Item from "../Item/Item";
-import Stack from '@mui/material/Stack';
-import Grid from '@mui/material/Unstable_Grid2';
-import './List.css';
+import MedicalTeamItem from "../MedicalTeamItem/MedicalTeamItem";
+import './MedicalTeamList.css';
 
-function List() {
+// MUI Imports
+import AddIcon from '@mui/icons-material/Add';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+
+function MedicalTeamList() {
     const dispatch = useDispatch();
     const history = useHistory();
     const medicalteam = useSelector(store => store.medicalteam.medicalteamReducer);
@@ -30,22 +33,17 @@ function List() {
                 alignItems="center"
                 spacing={2}
             >
-                <p className="listComponentTitle">Medical Providers</p>
-
+                <Typography>Medical Providers</Typography>
                 {
                     medicalteam.length > 0 ?
-                        <Grid 
-                        className='listGrid'
-                        container 
-                        alignItems="stretch"
-                        spacing={2}>
+                        <Stack spacing={2}>
                             {medicalteam.map(provider => (
-                                <Item 
+                                <MedicalTeamItem 
                                 className='listItem'
                                 key={provider.id} 
                                 provider={provider}/>)
                             )}
-                        </Grid>
+                        </Stack>
                     :
                         <p>No medical providers</p>
                 }
@@ -54,12 +52,12 @@ function List() {
                     onClick={() => {history.push('/medicalteam/addnew')}} 
                     variant="outlined" 
                     size="small"
-                >
-                    Add New Provider
+                ><AddIcon/>
+                    Add
                 </Button>
             </Stack>
         </Container>
     )
 }
 
-export default List;
+export default MedicalTeamList;

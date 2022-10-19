@@ -1,72 +1,71 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
 import { useSelector, useDispatch } from 'react-redux'
-import { useHistory } from 'react-router'
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Container from '@mui/material/Container';
+import { useHistory, useParams } from 'react-router'
 
-function EditDetail() {
+// MUI Imports
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+
+function MedicationDetail() {
     const params = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
-    const medteamToEdit = useSelector(store => store.medicalteam.medicalteamDetailReducer);
+    const medicationToEdit = useSelector(store => store.medication.medicationDetailReducer);
     const [readOnly, setReadOnly] = useState(true);
 
     useEffect(() => {
-        getMedTeam();
+        getMedication();
     }, [params.id])
 
-    // fetch the medical provider
-    const getMedTeam = () => {
+    // fetch the medication
+    const getMedication = () => {
         dispatch({
-            type: 'FETCH_MEDICAL_TEAM_DETAIL',
+            type: 'FETCH_MEDICATION_DETAIL',
             payload: params.id
           })
     }
-    
+
     // toggles input fields between edit and read only
     const toggleEdit = () => {
-      setReadOnly(!readOnly);
+        setReadOnly(!readOnly);
     }
 
-    // update the medical provider
+    // update the medication
     const handleSave = (e) => {
-      e.preventDefault();
-      // dispatch updated medical team object to a saga function:
-      dispatch({
-        type: 'UPDATE_MEDTEAM',
-        payload: medteamToEdit
-      })
-      history.push(`/medicalteam/detail/${params.id}`)
+        e.preventDefault();
+        // dispatch updated medical team object to a saga function:
+        dispatch({
+            type: 'UPDATE_MEDICATION',
+            payload: medicationToEdit
+        })
+        history.push(`/medication/detail/${params.id}`)
     }
-  
-    // cancel editing of medical provider
+
+    // cancel editing of medication
     const handleCancel = (e) => {
-      e.preventDefault();
+        e.preventDefault();
         // discard changes
-        getMedTeam();
+        getMedication();
         // make fields read only
         toggleEdit();
     }
-
+  
     const handleDelete = () => {
         console.log('in handleDelete');
         dispatch({
-            type: 'DELETE_MED_TEAM',
+            type: 'DELETE_MEDICATION',
             payload: params.id
         })
-        history.push(`/medicalteam`)
+        history.push(`/medication`)
     }
 
     // return to medical team list
     const handleBack = () => {
         console.log('in handleBack');
-        history.push(`/medicalteam`);
+        history.push(`/medication`);
     }
-
-    console.log('here is medteamToEdit:', medteamToEdit);
 
     return (
         <Container maxWidth="sm">
@@ -89,7 +88,7 @@ function EditDetail() {
 
                 <Button onClick={handleDelete} size="small" variant="contained">Delete</Button>
 
-                {medteamToEdit && 
+                {medicationToEdit && 
                     <form>
                         <Stack
                         direction="column"
@@ -103,63 +102,54 @@ function EditDetail() {
                             id="outlined-read-only-input"
                             label="name"
                             size="small"
-                            value={medteamToEdit.name || ''}
+                            value={medicationToEdit.name || ''}
                             InputProps={{readOnly: readOnly}}
-                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_NAME', payload: e.target.value})}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDICATION_NAME', payload: e.target.value})}
                             />
                             <TextField
                             multiline
                             id="outlined-read-only-input"
-                            label="specialty"
+                            label="indication"
                             size="small"
-                            value={medteamToEdit.specialty || ''}
+                            value={medicationToEdit.indication || ''}
                             InputProps={{readOnly: readOnly}}
-                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_SPECIALTY', payload: e.target.value})}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDICATION_INDICATION', payload: e.target.value})}
                             />
                             <TextField
                             multiline
                             id="outlined-read-only-input"
-                            label="clinic"
+                            label="dose"
                             size="small"
-                            value={medteamToEdit.clinic || ''}
+                            value={medicationToEdit.dose || ''}
                             InputProps={{readOnly: readOnly}}
-                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_CLINIC', payload: e.target.value})}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDICATION_DOSE', payload: e.target.value})}
                             />
                             <TextField
                             multiline
                             id="outlined-read-only-input"
-                            label="phone"
+                            label="frequency"
                             size="small"
-                            value={medteamToEdit.phone || ''}
+                            value={medicationToEdit.frequency || ''}
                             InputProps={{readOnly: readOnly}}
-                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_PHONE', payload: e.target.value})}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDICATION_FREQUENCY', payload: e.target.value})}
                             />
                             <TextField
                             multiline
                             id="outlined-read-only-input"
-                            label="patient portal"
+                            label="route"
                             size="small"
-                            value={medteamToEdit.portal || ''}
+                            value={medicationToEdit.route || ''}
                             InputProps={{readOnly: readOnly}}
-                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_PORTAL', payload: e.target.value})}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDICATION_ROUTE', payload: e.target.value})}
                             />
                             <TextField
                             multiline
                             id="outlined-read-only-input"
-                            label="next appointment"
+                            label="notes"
                             size="small"
-                            value={medteamToEdit.next_appointment || ''}
+                            value={medicationToEdit.notes || ''}
                             InputProps={{readOnly: readOnly}}
-                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_NEXT_APPOINTMENT', payload: e.target.value})}
-                            />
-                            <TextField
-                            multiline
-                            id="outlined-read-only-input"
-                            label="comments"
-                            size="small"
-                            value={medteamToEdit.comments || ''}
-                            InputProps={{readOnly: readOnly}}
-                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_COMMENTS', payload: e.target.value})}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDICATION_NOTES', payload: e.target.value})}
                             />
                         </Stack>
                     </form>
@@ -174,7 +164,7 @@ function EditDetail() {
                  
              </Stack>
         </Container>
-    );
+    )
 }
 
-export default EditDetail;
+export default MedicationDetail;
