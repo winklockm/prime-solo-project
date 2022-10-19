@@ -1,13 +1,14 @@
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
 import React, { useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
-// import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-function AddNew() {
+// MUI Imports
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+
+function MedicalTeamAdd() {
 
     const [name, setName] = useState('');
     const [specialty, setSpecialty] = useState('');
@@ -19,9 +20,8 @@ function AddNew() {
 
     const history = useHistory();
     const dispatch = useDispatch();
-    const {id} = useParams();
 
-    const handleClick = () => {
+    const handleAdd = () => {
         console.log('in handleClick');
         const newMedProvider = {
             name: name,
@@ -44,18 +44,11 @@ function AddNew() {
         setPortal('');
         setNextAppointment('');
         setComments('');
-        // navigate user to the list page after adding new provider
+        // navigate user to Medical Team List page after adding new provider
         history.push('/medicalteam');
     }
 
-    // use for mobile date picker
-    // const handleChange = (newDate) => {
-    //     setNextAppointment(newDate);
-    // }
-
     return (
-
-        <>
         <Container maxWidth="sm">
             <p className="componentTitle">Add Medical Provider</p>
             <Stack
@@ -119,16 +112,6 @@ function AddNew() {
                     value={nextAppointment}
                     onChange={(event) => setNextAppointment(event.target.value)}
                     />
-
-
-                    {/* Get this to work later
-                    <MobileDatePicker
-                    label="next appointment"
-                    inputFormat="MM/DD/YYYY"
-                    value={nextAppointment}
-                    onChange={handleChange}
-                    renderInput={(params) => <TextField {...params} />}
-                    /> */}
                 </div>
 
                 <div>
@@ -143,15 +126,13 @@ function AddNew() {
                 <Button           
                 variant="outlined" 
                 size="small"
-                onClick={handleClick}
+                onClick={handleAdd}
                 >
                     Save
                 </Button>
-
             </Stack>
         </Container>
-        </>
     )
 }
 
-export default AddNew;
+export default MedicalTeamAdd;

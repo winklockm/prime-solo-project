@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
 import { useSelector, useDispatch } from 'react-redux'
-import { useHistory } from 'react-router'
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Container from '@mui/material/Container';
+import { useHistory, useParams } from 'react-router'
 
-function EditDetail() {
+// MUI Imports
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+
+function MedicalTeamDetail() {
     const params = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
@@ -177,4 +178,4 @@ function EditDetail() {
     );
 }
 
-export default EditDetail;
+export default MedicalTeamDetail;

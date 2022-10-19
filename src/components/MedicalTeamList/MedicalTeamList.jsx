@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import Item from "../Item/Item";
-import Stack from '@mui/material/Stack';
-import Grid from '@mui/material/Unstable_Grid2';
-import Typography from '@mui/material/Typography';
-import AddIcon from '@mui/icons-material/Add';
-
+import MedicalTeamItem from "../MedicalTeamItem/MedicalTeamItem";
 import './MedicalTeamList.css';
+
+// MUI Imports
+import AddIcon from '@mui/icons-material/Add';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 
 function MedicalTeamList() {
     const dispatch = useDispatch();
@@ -38,7 +38,7 @@ function MedicalTeamList() {
                     medicalteam.length > 0 ?
                         <Stack spacing={2}>
                             {medicalteam.map(provider => (
-                                <Item 
+                                <MedicalTeamItem 
                                 className='listItem'
                                 key={provider.id} 
                                 provider={provider}/>)

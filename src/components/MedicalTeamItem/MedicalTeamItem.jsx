@@ -1,21 +1,19 @@
-import Grid from '@mui/material/Unstable_Grid2';
 import {useHistory} from 'react-router-dom';
-import './Item.css';
-import Container from '@mui/material/Container';
+import './MedicalTeamItem.css';
+
+// MUI Imports
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-function Item({provider}) {
 
+function MedicalTeamItem({provider}) {
     const history = useHistory();
 
     const handleClick = () => {
-    console.log('in handleClick. Provider.id is:', provider.id);
-    history.push(`/medicalteam/detail/${provider.id}`);
-} 
+        console.log('in handleClick. Provider.id is:', provider.id);
+        history.push(`/medicalteam/detail/${provider.id}`);
+    } 
 
     return (
             <Card 
@@ -28,9 +26,8 @@ function Item({provider}) {
                 <Typography variant="body2" >{provider.specialty}</Typography>
                 <Typography variant="body2" color="text.secondary">{provider.clinic}</Typography>
                 </CardContent>
-            </Card>
-       
+            </Card>    
     )
 }
 
-export default Item;
+export default MedicalTeamItem;
