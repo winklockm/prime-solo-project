@@ -3,6 +3,7 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import medicalteam from './medicalteam.reducer';
 import medication from './medication.reducer';
+import insurance from './insurance.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   medicalteam, // contains medicalteamReducer, medicalteamDetailReducer
   medication, // contains medicationReducer, medicationDetailReducer
+  insurance, // contains insuranceReducer, insuranceDetailReducer
 });
 
 export default rootReducer;

@@ -35,7 +35,7 @@ function MedicationDetail() {
     // update the medication
     const handleSave = (e) => {
         e.preventDefault();
-        // dispatch updated medical team object to a saga function:
+        // dispatch updated medication object to a saga function:
         dispatch({
             type: 'UPDATE_MEDICATION',
             payload: medicationToEdit
