@@ -24,6 +24,10 @@ import MedicalTeamAdd from '../MedicalTeamAdd/MedicalTeamAdd';
 import MedicationList from '../MedicationList/MedicationList';
 import MedicationDetail from '../MedicationDetail/MedicationDetail';
 import MedicationAdd from '../MedicationAdd/MedicationAdd';
+//Insurance Imports
+import InsuranceList from '../InsuranceList/InsuranceList';
+import InsuranceDetail from '../InsuranceDetail/InsuranceDetail';
+import InsuranceAdd from '../InsuranceAdd/InsuranceAdd';
 
 import './App.css';
 
@@ -86,7 +90,17 @@ function App() {
 
           {/* // logged in shows insurance route with List component, else shows LoginPage */}
           <ProtectedRoute exact path="/insurance">
-            <MedicalTeamList />
+            <InsuranceList />
+          </ProtectedRoute>
+
+          {/* // logged in shows medication detail route with MedicationDetail component, else shows LoginPage */}
+          <ProtectedRoute exact path="/insurance/detail/:id">
+            <InsuranceDetail />
+          </ProtectedRoute>
+
+          {/* // logged in shows medication add route with MedicationAdd component, else shows LoginPage */}
+           <ProtectedRoute exact path="/insurance/add">
+            <InsuranceAdd />
           </ProtectedRoute>
 
           <Route exact path="/login">
