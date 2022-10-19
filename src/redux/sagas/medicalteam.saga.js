@@ -1,17 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* addNewMedProvider(action) {
-    console.log('in addNewMedProvider. action.payload is:', action.payload);
-    try{
-        const newMedProvider = action.payload
-        const medProviderRes = yield axios.post('/medicalteam', newMedProvider);
-        console.log('in addNewMedProvider, medProviderRes is:', medProviderRes);
-    } catch(error) {
-        console.log('error in POST in addNewMedProvider:', error);
-    }
-}
-
 function* fetchMedicalTeam() {
     console.log('in fetchMedicalTeam');
     try{
@@ -40,9 +29,19 @@ function* fetchMedicalTeamDetail(action) {
             type: `SET_MEDICAL_TEAM_DETAIL`,
             payload: medicalteamDetailRes.data
         })
-
     } catch(error) {
         console.log('error getting medical team details:', error);
+    }
+}
+
+function* addNewMedProvider(action) {
+    console.log('in addNewMedProvider. action.payload is:', action.payload);
+    try{
+        const newMedProvider = action.payload
+        const medProviderRes = yield axios.post('/medicalteam', newMedProvider);
+        console.log('in addNewMedProvider, medProviderRes is:', medProviderRes);
+    } catch(error) {
+        console.log('error in POST in addNewMedProvider:', error);
     }
 }
 
@@ -80,9 +79,9 @@ function* deleteMedTeam(action) {
 }
 
 function* medicalteamSaga() {
-    yield takeLatest('ADD_NEW_MED_PROVIDER', addNewMedProvider);
     yield takeLatest('FETCH_MEDICAL_TEAM', fetchMedicalTeam);
     yield takeLatest('FETCH_MEDICAL_TEAM_DETAIL', fetchMedicalTeamDetail);
+    yield takeLatest('ADD_NEW_MED_PROVIDER', addNewMedProvider);
     yield takeLatest('UPDATE_MEDTEAM', updateMedTeam);
     yield takeLatest('DELETE_MED_TEAM', deleteMedTeam)
 }
