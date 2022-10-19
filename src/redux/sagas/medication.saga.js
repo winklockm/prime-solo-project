@@ -34,7 +34,7 @@ function* fetchMedicationDetail(action) {
     try{
         const medicationDetailRes = yield axios({
             method: 'GET',
-            url: `/medicalteam/${medicationId}`
+            url: `/medication/${medicationId}`
         })
         yield put({
             type: `SET_MEDICATION_DETAIL`,
@@ -42,7 +42,7 @@ function* fetchMedicationDetail(action) {
         })
 
     } catch(error) {
-        console.log('error getting medical team details:', error);
+        console.log('error getting medication details:', error);
     }
 }
 
@@ -52,7 +52,7 @@ function* updateMedication(action) {
         console.log('in updateMedication. medicationToUpdateis:', medicationToUpdate);
         yield axios({
             method: 'PUT',
-            url: `/medicalteam/${medicationToUpdate.id}/edit`,
+            url: `/medication/${medicationToUpdate.id}/edit`,
             data: medicationToUpdate
         })
         yield put({

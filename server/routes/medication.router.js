@@ -83,7 +83,7 @@ router.put('/:id/edit', (req, res) => {
       "dose" = $3,
       "frequency" = $4,
       "route" = $5,
-      "notes" = $6,
+      "notes" = $6
     WHERE
       "id" = $7;
   `;
