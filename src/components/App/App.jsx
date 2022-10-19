@@ -20,6 +20,10 @@ import BottomNav from '../BottomNav/BottomNav';
 import MedicalTeamList from '../MedicalTeamList/MedicalTeamList';
 import MedicalTeamDetail from '../MedicalTeamDetail/MedicalTeamDetail';
 import MedicalTeamAdd from '../MedicalTeamAdd/MedicalTeamAdd';
+// Medication Imports
+import MedicationList from '../MedicationList/MedicationList';
+import MedicationDetail from '../MedicationDetail/MedicationDetail';
+import MedicationAdd from '../MedicationAdd/MedicationAdd';
 
 import './App.css';
 
@@ -55,19 +59,29 @@ function App() {
             <MedicalTeamList />
           </ProtectedRoute>
 
-          {/* // logged in shows medicalteam/addnew route with AddNew component, else shows LoginPage */}
-          <ProtectedRoute exact path="/medicalteam/addnew">
-            <MedicalTeamAdd />
-          </ProtectedRoute>
-
           {/* // logged in shows medicalteam/detail/:id route with Detail component, else shows LoginPage */}
           <ProtectedRoute exact path="/medicalteam/detail/:id">
             <MedicalTeamDetail />
           </ProtectedRoute>
 
-          {/* // logged in shows medication route with List component, else shows LoginPage */}
+          {/* // logged in shows medicalteam/addnew route with AddNew component, else shows LoginPage */}
+          <ProtectedRoute exact path="/medicalteam/addnew">
+            <MedicalTeamAdd />
+          </ProtectedRoute>
+
+          {/* // logged in shows medication route with MedicationList component, else shows LoginPage */}
           <ProtectedRoute exact path="/medication">
-            <MedicalTeamList />
+            <MedicationList />
+          </ProtectedRoute>
+
+          {/* // logged in shows medication detail route with MedicationDetail component, else shows LoginPage */}
+          <ProtectedRoute exact path="/medication/detail/:id">
+            <MedicationDetail />
+          </ProtectedRoute>
+
+          {/* // logged in shows medication add route with MedicationAdd component, else shows LoginPage */}
+           <ProtectedRoute exact path="/medication/add">
+            <MedicationAdd />
           </ProtectedRoute>
 
           {/* // logged in shows insurance route with List component, else shows LoginPage */}
