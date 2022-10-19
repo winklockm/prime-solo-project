@@ -80,9 +80,9 @@ function* deleteMedication(action) {
 }
 
 function* medicationSaga() {
-    yield takeLatest('ADD_MEDICATION', addMedication);
     yield takeLatest('FETCH_MEDICATIONS', fetchMedications);
     yield takeLatest('FETCH_MEDICATION_DETAIL', fetchMedicationDetail);
+    yield takeLatest('ADD_MEDICATION', addMedication);
     yield takeLatest('UPDATE_MEDICATION', updateMedication);
     yield takeLatest('DELETE_MEDICATION', deleteMedication)
 }

@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 const medicationReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_MEDICATION':
+        case 'SET_MEDICATIONS':
           return action.payload;
         default:
           return state;
