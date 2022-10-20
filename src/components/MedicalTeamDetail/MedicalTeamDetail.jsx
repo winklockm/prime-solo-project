@@ -15,6 +15,8 @@ function MedicalTeamDetail() {
     const history = useHistory();
     const medteamToEdit = useSelector(store => store.medicalteam.medicalteamDetailReducer);
     const [readOnly, setReadOnly] = useState(true);
+    // const dt = DateTime.fromISO(medteamToEdit.next_appointment);
+    // const date = dt.toLocaleString()
 
     useEffect(() => {
         getMedTeam();
@@ -28,6 +30,11 @@ function MedicalTeamDetail() {
           })
     }
     
+    const formatTime = (datetimeString) => {
+        const dt = DateTime.fromISO(datetimeString)
+        return dt.toLocaleString()
+      }
+
     // toggles input fields between edit and read only
     const toggleEdit = () => {
       setReadOnly(!readOnly);
@@ -67,9 +74,12 @@ function MedicalTeamDetail() {
         console.log('in handleBack');
         history.push(`/medicalteam`);
     }
-
-    console.log('here is medteamToEdit:', medteamToEdit);
-
+    // 2023-07-01T05:00:00.000Z
+    console.log('here is date:', medteamToEdit.next_appointment);
+    // 7/1/2023
+    console.log('here is date:', formatTime(medteamToEdit.next_appointment));
+    // console.log('trying date on my own:', dt.toLocaleString()) // THIS WORKS!
+    // console.log('here is date:', date); // worked until I tried to edit it
     return (
         <Container maxWidth="sm">
             <Stack
@@ -150,7 +160,8 @@ function MedicalTeamDetail() {
                             id="outlined-read-only-input"
                             label="next appointment"
                             size="small"
-                            value={medteamToEdit.next_appointment || ''}
+                            value={formatTime(medteamToEdit.next_appointment) || ''}
+                            // value={date || ''}
                             InputProps={{readOnly: readOnly}}
                             onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_NEXT_APPOINTMENT', payload: e.target.value})}
                             />
