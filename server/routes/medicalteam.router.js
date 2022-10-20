@@ -1,11 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 /**
  * GET BASIC INFO ABOUT ALL MEDICAL PROVIDERS
  */
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   console.log('GET /medicalteam');
   console.log('this is req.user.patient_id:', req.user.patient_id);
   const sqlText = `
