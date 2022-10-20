@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, useParams } from 'react-router'
@@ -7,6 +8,9 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogTitle from '@mui/material/DialogTitle';
 
 function MedicationDetail() {
     const params = useParams();
@@ -14,6 +18,9 @@ function MedicationDetail() {
     const history = useHistory();
     const medicationToEdit = useSelector(store => store.medication.medicationDetailReducer);
     const [readOnly, setReadOnly] = useState(true);
+
+    // for dialog alert upon delete
+    const [open, setOpen] = React.useState(false);
 
     useEffect(() => {
         getMedication();
@@ -61,6 +68,15 @@ function MedicationDetail() {
         history.push(`/medication`)
     }
 
+        // for dialog alert upon delete
+        const handleClickOpen = () => {
+            setOpen(true);
+        };
+    
+        const handleClose = () => {
+            setOpen(false);
+        };
+
     // return to medical team list
     const handleBack = () => {
         console.log('in handleBack');
@@ -86,7 +102,26 @@ function MedicationDetail() {
                 </div>
                 }
 
-                <Button onClick={handleDelete} size="small" variant="contained">Delete</Button>
+                {/* show dialog box when delete is clicked */}
+                <Button onClick={handleClickOpen} size="small" variant="contained">Delete</Button>
+
+                <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+                >
+                    {/* confirm or cancel deletion */}
+                    <DialogTitle id="alert-dialog-title">
+                        {"Are you sure you want to delete?"}
+                    </DialogTitle>
+                    <DialogActions>
+                        <Button onClick={handleClose}>Cancel</Button>
+                        <Button onClick={handleDelete} autoFocus>
+                            Delete
+                        </Button>
+                        </DialogActions>
+                </Dialog>
 
                 {medicationToEdit && 
                     <form>
