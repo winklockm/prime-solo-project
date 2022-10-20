@@ -15,3 +15,10 @@
         })
     }
 - In the router files in the router functions can call the above function from the server module folder
+
+
+
+-installed:
+npm install @mui/x-date-pickers
+npm install moment
+npm install dayjs
