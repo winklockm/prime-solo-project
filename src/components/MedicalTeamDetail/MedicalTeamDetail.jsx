@@ -6,7 +6,6 @@ import dayjs from 'dayjs'; // DELETE FORM MATT
 // MUI Imports
 import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers'; //DELETE FROM MATT
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';//DELETE FROM MATT
-
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
@@ -14,6 +13,8 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function MedicalTeamDetail() {
 
@@ -110,7 +111,7 @@ function MedicalTeamDetail() {
 
                 {/* show edit button while in read only mode, otherwise show save and cancel buttons while editing */}
                 { readOnly ?
-                    <Button onClick={toggleEdit} size="small" variant="contained">Edit</Button>
+                    <Button onClick={toggleEdit} size="small" variant="outlined" startIcon={<EditIcon />}>Edit</Button>
                 :
                 <div>
                     <Button onClick={handleSave}>Save</Button>
@@ -119,7 +120,7 @@ function MedicalTeamDetail() {
                 }
 
                 {/* show dialog box when delete is clicked */}
-                <Button onClick={handleClickOpen} size="small" variant="contained">Delete</Button>
+                <Button onClick={handleClickOpen} size="small" variant="outlined" startIcon={<DeleteIcon />}>Delete</Button>
 
                 <Dialog
                 open={open}

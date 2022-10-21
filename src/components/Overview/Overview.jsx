@@ -33,8 +33,8 @@ console.log('from medicalteam reducer:', medicalTeam.length);
             <p className='welcome'>Welcome, {user.username}!</p>
             <Container className='componentBox' maxWidth="sm">
                 <Stack spacing={2}>
-                    <p className='componentTitle'>This is the Overview component</p>
-                    <p>{user.patient_name} has:</p>
+                    
+                    <p className='componentTitle'>{user.patient_name} has:</p>
                     
                     { medicalTeam.length>1 || medicalTeam.length<=0 ?
                         <p>{medicalTeam.length} medical providers</p> :

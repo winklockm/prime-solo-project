@@ -29,7 +29,36 @@ import InsuranceList from '../InsuranceList/InsuranceList';
 import InsuranceDetail from '../InsuranceDetail/InsuranceDetail';
 import InsuranceAdd from '../InsuranceAdd/InsuranceAdd';
 
+
 import './App.css';
+// MUI Imports
+import { red } from '@mui/material/colors';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { green, teal, purple } from '@mui/material/colors';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: teal[400],
+    },
+    // secondary: {
+    //   main: purple[500],
+    // },
+  },
+});
+
+// const theme = createTheme({
+//   palette: {
+//     primary: {
+//       main: teal[500],
+//     },
+//     secondary: {
+//       main: purple[500],
+//     },
+//   },
+// });
 
 function App() {
   const dispatch = useDispatch();
@@ -41,8 +70,12 @@ function App() {
   }, [dispatch]);
 
   return (
+    <ThemeProvider theme={darkTheme}>
+    {/* <ThemeProvider theme={theme}> */}
     <Router>
       <div>
+      
+      <CssBaseline />
         <Header />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -142,9 +175,10 @@ function App() {
           </Route>
         </Switch>
         <BottomNav />
-        {/* <Footer /> */}
+        
       </div>
     </Router>
+    </ThemeProvider>
   );
 
 }
