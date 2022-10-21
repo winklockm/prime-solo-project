@@ -7,6 +7,10 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
+import dayjs from 'dayjs';
+import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers'; //DELETE FROM MATT
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';//DELETE FROM MATT
+
 
 function MedicalTeamAdd() {
 
@@ -20,6 +24,13 @@ function MedicalTeamAdd() {
 
     const history = useHistory();
     const dispatch = useDispatch();
+
+
+    const handleNextAppt = (value) => {
+        console.log('in handleNextAppt. Value is:', value.$d)
+        setNextAppointment(value)
+        // console.log('value was this, now it will change :)', value)
+    } 
 
     const handleAdd = () => {
         console.log('in handleClick');
@@ -57,6 +68,21 @@ function MedicalTeamAdd() {
               alignItems="center"
               spacing={2}
             >
+
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DateTimePicker
+                    value={nextAppointment}
+                    onChange={handleNextAppt}
+                    label="next appointment" 
+                    variant="outlined" 
+                    size="small"
+                    renderInput={(params) => {
+                        return <TextField {...params} />;
+                    }}
+                />
+            </LocalizationProvider>
+
+
                 <div>
                     <TextField
                     label="name" 
@@ -105,13 +131,13 @@ function MedicalTeamAdd() {
                 </div>
 
                 <div>
-                    <TextField
+                    {/* <TextField
                     label="next appointment" 
                     variant="outlined" 
                     size="small"
                     value={nextAppointment}
                     onChange={(event) => setNextAppointment(event.target.value)}
-                    />
+                    /> */}
                 </div>
 
                 <div>

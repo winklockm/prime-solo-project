@@ -85,7 +85,7 @@ function InsuranceDetail() {
     }
 
     return (
-        <Container maxWidth="sm">
+        <Container className='helpme' maxWidth="sm">
         <Stack
         direction="column"
         justifyContent="center"
@@ -197,7 +197,18 @@ function InsuranceDetail() {
             :
             <Button onClick={handleBack} size="small" variant="contained" disabled>Back</Button>
             }
-             
+              <div>
+                            <button>BUTTON</button>
+                        </div>
+                        <div>
+                            <button>BUTTON</button>
+                        </div>
+                        <div>
+                            <button>BUTTON</button>
+                        </div>
+                        <div>
+                            <button>BUTTON</button>
+                        </div>
          </Stack>
     </Container>
     )
