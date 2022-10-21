@@ -187,18 +187,6 @@ function MedicationDetail() {
                             onChange={(e) => dispatch({type: 'EDIT_MEDICATION_NOTES', payload: e.target.value})}
                             />
                         </Stack>
-                        <div>
-                            <button>BUTTON</button>
-                        </div>
-                        <div>
-                            <button>BUTTON</button>
-                        </div>
-                        <div>
-                            <button>BUTTON</button>
-                        </div>
-                        <div>
-                            <button>BUTTON</button>
-                        </div>
                     </form>
                 }
 

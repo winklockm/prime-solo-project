@@ -197,18 +197,6 @@ function InsuranceDetail() {
             :
             <Button onClick={handleBack} size="small" variant="contained" disabled>Back</Button>
             }
-              <div>
-                            <button>BUTTON</button>
-                        </div>
-                        <div>
-                            <button>BUTTON</button>
-                        </div>
-                        <div>
-                            <button>BUTTON</button>
-                        </div>
-                        <div>
-                            <button>BUTTON</button>
-                        </div>
          </Stack>
     </Container>
     )
