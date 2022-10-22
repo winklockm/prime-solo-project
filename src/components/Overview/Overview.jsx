@@ -9,6 +9,7 @@ import './Overview.css';
 
 function Overview() {
     const user = useSelector((store) => store.user);
+    const history = useHistory();
     const medicalTeam = useSelector((store) => store.medicalteam.medicalteamReducer);
     const medications = useSelector((store) => store.medication.medicationReducer);
     const insurance = useSelector((store) => store.insurance.insuranceReducer);
@@ -26,11 +27,15 @@ function Overview() {
         })
     }, []);
 
+    const handleAbout = () => {
+        history.push('/about');
+    }
+
 console.log('user is', user)
 console.log('from medicalteam reducer:', medicalTeam.length);
     return (
         <>
-            <p className='welcome'>Welcome, {user.username}!</p>
+            <p className='welcome' onClick={handleAbout}>Welcome, {user.username}!</p>
             <Container className='componentBox' maxWidth="sm">
                 <Stack spacing={2}>
                     

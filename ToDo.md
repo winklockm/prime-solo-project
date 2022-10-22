@@ -1,11 +1,16 @@
 ## TO DO
-
+- date stuff in detail --> CURRENTLY DISPLAYING NEXT APPT FOR LAST DETAIL CLICKED
 - keep nav buttons highlighted
 - protect routes!
 - background image for login page?
 - upload profile photo and display in header
 - about page
 - secret button to fill out form on click
+X date stuff in add
+- change color around next appointment field in add / detail
+- when you click the phone number it opens up phone to place call?
+- click patient portal to open it in new window
+
 
 ***** FOR STRETCH GOALS *****
 - Create patient table

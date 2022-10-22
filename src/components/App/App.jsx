@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -16,6 +15,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Overview from '../Overview/Overview';
 import BottomNav from '../BottomNav/BottomNav';
+import AboutPage from '../AboutPage/AboutPage';
+
 // Medical Team Imports
 import MedicalTeamList from '../MedicalTeamList/MedicalTeamList';
 import MedicalTeamDetail from '../MedicalTeamDetail/MedicalTeamDetail';
@@ -167,6 +168,10 @@ function App() {
               // Otherwise, show the Login page
               <LoginPage />
             }
+          </Route>
+
+          <Route exact path='/about'>
+            <AboutPage />
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}

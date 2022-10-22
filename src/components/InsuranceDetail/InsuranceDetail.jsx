@@ -136,7 +136,7 @@ function InsuranceDetail() {
                         <TextField
                         multiline
                         id="outlined-read-only-input"
-                        label="name"
+                        label="insurance provider"
                         size="small"
                         value={insuranceToEdit.provider || ''}
                         InputProps={{readOnly: readOnly}}
@@ -145,7 +145,7 @@ function InsuranceDetail() {
                         <TextField
                         multiline
                         id="outlined-read-only-input"
-                        label="indication"
+                        label="group number"
                         size="small"
                         value={insuranceToEdit.group || ''}
                         InputProps={{readOnly: readOnly}}
@@ -154,7 +154,7 @@ function InsuranceDetail() {
                         <TextField
                         multiline
                         id="outlined-read-only-input"
-                        label="dose"
+                        label="id number"
                         size="small"
                         value={insuranceToEdit.id_number || ''}
                         InputProps={{readOnly: readOnly}}
@@ -163,7 +163,7 @@ function InsuranceDetail() {
                         <TextField
                         multiline
                         id="outlined-read-only-input"
-                        label="frequency"
+                        label="plan name"
                         size="small"
                         value={insuranceToEdit.plan_name || ''}
                         InputProps={{readOnly: readOnly}}
@@ -172,7 +172,7 @@ function InsuranceDetail() {
                         <TextField
                         multiline
                         id="outlined-read-only-input"
-                        label="route"
+                        label="phone number"
                         size="small"
                         value={insuranceToEdit.phone || ''}
                         InputProps={{readOnly: readOnly}}
