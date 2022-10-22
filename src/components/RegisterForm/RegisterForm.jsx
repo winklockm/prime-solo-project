@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import ImageUpload from '../ImageUpload/ImageUpload';
+
+// MUI Imports
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 
 function RegisterForm() {
+  const dispatch = useDispatch();
+  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [patientName, setPatientName] = useState('');
-  const [image, setImage] = useState('');
-  const [patientPhoto, setPatientPhoto] = useState('');
+
   const errors = useSelector((store) => store.errors);
-  
-  const dispatch = useDispatch();
+  const patientPhoto = useSelector((store) => store.patientPhotoReducer);
 
-  const uploadImage = () => {
-    console.log('in uploadImage. here is image:', image);
-    setPatientPhoto(image);
-  }
-
+// ADD PHOTO TO PAYLOAD BEFORE DISPATCH
   const registerUser = (event) => {
     event.preventDefault();
     dispatch({
@@ -28,19 +27,19 @@ function RegisterForm() {
         username: username,
         password: password,
         patientName: patientName,
-        patientPhoto: patientPhoto
+        patientPhoto: patientPhoto.patient_photo
       },
     })
     setUsername('');
     setPassword('');
     setPatientName('');
-    setImage('');
-    setPatientPhoto('');
+    
+
   }; // end registerUser
 
   return (
     <Container maxWidth="sm">
-      <form className="formPanel" onSubmit={registerUser}>
+      {/* <form className="formPanel" onSubmit={registerUser}> */}
 
         {errors.registrationMessage && (
           <h3 className="alert" role="alert">
@@ -83,31 +82,12 @@ function RegisterForm() {
             />
           </div>
           
-          <div>
-            <TextField
-            label="their photo" 
-            variant="outlined" 
-            size="small"
-            value={image}
-            onChange={(event) => setImage(event.target.value)}
-            />
-          </div>
-          <div>      
-            <Button onClick={uploadImage} size="small" variant="outlined">Image Preview</Button>
-          </div>
-      
-            {/* show image only if there is a patientPhoto set */}
-            {patientPhoto && (
-              <div>
-                <img src={patientPhoto} className='imagePreview'></img>
-              </div>
-            )} 
-
+          <ImageUpload />
           <div>
             <Button onClick={registerUser} size="small" variant="contained">Create Account</Button>
           </div>
         </Stack>
-      </form>
+      {/* </form> */}
     </Container>
   );
 }

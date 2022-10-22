@@ -3,6 +3,7 @@ import './Header.css';
 import { useSelector } from 'react-redux';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
+import Avatar from '@mui/material/Avatar';
 
 function Header() {
   const user = useSelector((store) => store.user);
@@ -34,7 +35,8 @@ function Header() {
             justifyContent="space-between"
             alignItems="center"
             spacing={0}>
-              <h2 className='subtitle'>Picture</h2>
+              {/* <h2 className='subtitle'>Picture</h2> */}
+              <Avatar src={user.patient_photo} sx={{width: 50, height: 50}} />
               <h1 className='title'>TakeCare</h1>
             </Stack>
           </Container>
