@@ -47,7 +47,10 @@ function RegisterForm() {
           </h3>
         )}
 
-        <Stack spacing={2}>
+        <Stack direction="column"
+              justifyContent="center"
+              alignItems="center"
+              spacing={2}>
           <div>
             <TextField
             label="username" 

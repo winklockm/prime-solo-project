@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
-
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+import './ImageUpload.css'
 function ImageUpload() {
 
     const dispatch = useDispatch();
-
+    const fileInputRef = useRef();
     const [fileInputState, setFileInputState] = useState('');
     const [previewSource, setPreviewSource] = useState();
-    const [selectedFile, setSelectedFile] = useState('');
   
     const handleFileInputChange = (e) => {
         const file = e.target.files[0];
@@ -40,75 +43,46 @@ function ImageUpload() {
     }
 
     return(
-        <div>
-            <h1>Upload</h1>
+        <div className='photoUpload'>
+            <Typography>their photo</Typography>
+            
             <form onSubmit={handleSubmitFile}>
-                <input 
-                type="file" 
-                name="image" 
-                onChange={handleFileInputChange}
-                value={fileInputState}
-                className="form-input"
-            />
-            <button className="btn" type="submit">Submit</button>
-            </form>
-            {previewSource && (
-                <Avatar src={previewSource} sx={{width: 200, height: 200}} />
-            //   <img src={previewSource} style={{height: '300px'}} />
-            )}
-        </div>
+                <Stack
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                spacing={1}
+                >
+                    <input 
+                    type="file" 
+                    hidden
+                    name="image" 
+                    onChange={handleFileInputChange}
+                    value={fileInputState}
+                    ref={fileInputRef}
+                    className="form-input"
+                    />
+                    <Avatar onClick={()=>fileInputRef.current.click()} sx={{ width: 150, height: 150 }}>
+                        { previewSource ?
+                            <Avatar src={previewSource} sx={{width: 150, height: 150}} />
+                        :
+                            <AddAPhotoIcon />
+                        }
+                    </Avatar>
+                    
+                    {/* enable confirm photo button if there is an image preview, 
+                    otherwise button is disabled */}
 
+                    { previewSource ?
+                    <Button type="submit" size="small" variant="outlined">Confirm</Button>
+                    :
+                    <Button disabled type="submit" size="small" variant="outlined">Confirm</Button>
+                    }
+                    
+                </Stack>
+            </form>
+        </div>
     )
 }
 
 export default ImageUpload;
-
-
-
-
-
-// function ImageUpload() {
-//     cloudinary.openUploadWidget({
-//        cloudName: "<cloud name>",
-//        uploadPreset: "<upload preset>",
-//        sources: [
-//            "local"
-//        ],
-//        googleApiKey: "<image_search_google_api_key>",
-//        showAdvancedOptions: false,
-//        cropping: true,
-//        multiple: false,
-//        defaultSource: "local",
-//        styles: {
-//            palette: {
-//                window: "#000000",
-//                sourceBg: "#000000",
-//                windowBorder: "#059696",
-//                tabIcon: "#FFFFFF",
-//                inactiveTabIcon: "#8E9FBF",
-//                menuIcons: "#059696",
-//                link: "#059696",
-//                action: "#059696",
-//                inProgress: "#FFFA00",
-//                complete: "#33ff00",
-//                error: "#EA2727",
-//                textDark: "#000000",
-//                textLight: "#FFFFFF"
-//            },
-//            fonts: {
-//                default: null,
-//                "'Space Mono', monospace": {
-//                    url: "https://fonts.googleapis.com/css?family=Space+Mono",
-//                    active: true
-//                }
-//            }
-//        }
-//    },
-//     (err, info) => {
-//       if (!err) {    
-//         console.log("Upload Widget event - ", info);
-//       }
-//      });
-//     }
-
-//     export default ImageUpload;

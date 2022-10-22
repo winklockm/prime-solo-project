@@ -3,7 +3,7 @@
 - keep nav buttons highlighted
 - protect routes!
 - background image for login page?
-- upload profile photo and display in header
+X upload profile photo and display in header
 X about page
 X secret button to fill out form on click
 X date stuff in add
