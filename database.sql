@@ -17,7 +17,7 @@ CREATE TABLE "user" (
     "username" VARCHAR(80) UNIQUE NOT NULL,
     "password" VARCHAR(1000) NOT NULL,
     "patient_name" VARCHAR(1000) NOT NULL,
-    "patient_photo" VARCHAR(1000) NOT NULL,
+    "patient_photo" VARCHAR NOT NULL,
     "patient_id" SERIAL
 );
 
