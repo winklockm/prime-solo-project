@@ -2,37 +2,29 @@ import * as React from 'react';
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, useParams } from 'react-router'
-import dayjs from 'dayjs'; // DELETE FORM MATT
 // MUI Imports
-import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers'; //DELETE FROM MATT
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';//DELETE FROM MATT
-
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+// import dayjs from 'dayjs';
+import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 function MedicalTeamDetail() {
-
-
     const params = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
     const medteamToEdit = useSelector(store => store.medicalteam.medicalteamDetailReducer);
     const [readOnly, setReadOnly] = useState(true);
-    
     // for dialog alert upon delete
     const [open, setOpen] = React.useState(false);
 
-    // const dt = DateTime.fromISO(medteamToEdit.next_appointment);
-    // const date = dt.toLocaleString()
-
     useEffect(() => {
         getMedTeam();
-        // setWat('');
     }, [params.id])
 
     // fetch the medical provider
@@ -43,26 +35,21 @@ function MedicalTeamDetail() {
           })
     }
 
-    // MATT COMMENTED OUT
-    // const formatTime = (datetimeString) => {
-    //     const dt = DateTime.fromISO(datetimeString)
-    //     return dt.toLocaleString()
-    //   }
-
     // toggles input fields between edit and read only
     const toggleEdit = () => {
       setReadOnly(!readOnly);
     }
 
+    const handleChangeAppointment = (value) => {
+        console.log('here is the date I am changing the appt to:', value);
+        dispatch({
+            type: 'EDIT_MEDTEAM_NEXT_APPOINTMENT', 
+            payload: value})
+        } 
+
     // update the medical provider
     const handleSave = (e) => {
       e.preventDefault();
-      
-        // convert time
-        // dispatch time
-
-        //then dispatch med team
-
       // dispatch updated medical team object to a saga function:
       dispatch({
         type: 'UPDATE_MEDTEAM',
@@ -102,25 +89,10 @@ function MedicalTeamDetail() {
     const handleBack = () => {
         console.log('in handleBack');
         history.push(`/medicalteam`);
-        // setWat('');
     }
-    // 2023-07-01T05:00:00.000Z
-    console.log('here is date:', medteamToEdit.next_appointment);
-    // 7/1/2023
-    // console.log('here is date:', formatTime(medteamToEdit.next_appointment));
-    // console.log('trying date on my own:', dt.toLocaleString()) // THIS WORKS!
-    // console.log('here is date:', date); // worked until I tried to edit it
-    
-    const [wat, setWat] = useState(dayjs(medteamToEdit.next_appointment)) //DELETE FROM MATT
-    const handleWat = (value) => {
-        setWat(value)
-        console.log('wat was this, now it will change :)', wat)
-    } 
-    
+
     return (
         <Container maxWidth="sm">
-            {/* DELETE MATT */}
-            <button onClick={() => {console.log(wat.toISOString())}}>blah</button>
             <Stack
             direction="column"
             justifyContent="center"
@@ -214,11 +186,10 @@ function MedicalTeamDetail() {
                             onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_PORTAL', payload: e.target.value})}
                             />
 
-                            
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DateTimePicker
-                                    value={wat}
-                                    onChange={handleWat}
+                                    value={medteamToEdit.next_appointment}
+                                    onChange={handleChangeAppointment}
                                     label="next appointment"
                                     size="small"
                                     renderInput={(params) => {
@@ -226,17 +197,7 @@ function MedicalTeamDetail() {
                                     }}
                                 />
                             </LocalizationProvider>
-{/* 
-                            <TextField
-                            multiline
-                            id="outlined-read-only-input"
-                            label="next appointment"
-                            size="small"
-                            value={formatTime(medteamToEdit.next_appointment) || ''}
-                            // value={date || ''}
-                            InputProps={{readOnly: readOnly}}
-                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_NEXT_APPOINTMENT', payload: e.target.value})}
-                            /> */}
+
                             <TextField
                             multiline
                             id="outlined-read-only-input"

@@ -125,16 +125,6 @@ function MedicalTeamAdd() {
                     onChange={(event) => setPortal(event.target.value)}
                     />
                 </div>
-
-                <div>
-                    {/* <TextField
-                    label="next appointment" 
-                    variant="outlined" 
-                    size="small"
-                    value={nextAppointment}
-                    onChange={(event) => setNextAppointment(event.target.value)}
-                    /> */}
-                </div>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DateTimePicker
                         value={nextAppointment}
