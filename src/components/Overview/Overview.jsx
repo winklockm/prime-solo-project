@@ -12,6 +12,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import dayjs from 'dayjs';
 import Appointment from './Appointment';
+import Box from '@mui/material/Box';
 
 function Overview() {
     const user = useSelector((store) => store.user);
@@ -42,10 +43,9 @@ console.log('from medicalteam reducer:', medicalTeam.length);
     return (
         <Container className='componentBox' maxWidth="sm">
             <Typography variant="h5" className='welcome' onClick={handleAbout}>Welcome, {user.username}!</Typography>
-                <Card>
+            
                     <Typography variant="h6" className='componentTitle'>{user.patient_name} has:</Typography>
                     <Stack
-                    className='listStack'
                     direction="column"
                     justifyContent="center"       
                     spacing={2}>  
@@ -71,7 +71,7 @@ console.log('from medicalteam reducer:', medicalTeam.length);
                     } */}
 
                 </Stack>
-                </Card>
+           
                 <LogOutButton />
             </Container>
     )
