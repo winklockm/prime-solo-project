@@ -24,16 +24,16 @@ function InsuranceDetail() {
     const [open, setOpen] = React.useState(false);
 
     useEffect(() => {
-        getInsurance();
-    }, [params.id])
-
-    // fetch the medication
-    const getInsurance = () => {
         dispatch({
             type: 'FETCH_INSURANCE_DETAIL',
             payload: params.id
           })
-    }
+          return () => {
+            dispatch({
+              type: 'CLEAR_INSURANCE_DETAIL'
+            })
+          }
+    }, [params.id])
 
      // toggles input fields between edit and read only
      const toggleEdit = () => {

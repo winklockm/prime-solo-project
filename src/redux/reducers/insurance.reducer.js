@@ -15,6 +15,8 @@ const insuranceDetailReducer = (state = [], action) => {
   switch (action.type) {
       case 'SET_INSURANCE_DETAIL':
         return action.payload;
+      case 'CLEAR_INSURANCE_DETAIL':
+          return action.payload;
       case 'EDIT_INSURANCE_PROVIDER':
         return {...state, provider: action.payload}
       case 'EDIT_INSURANCE_GROUP':

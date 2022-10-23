@@ -183,16 +183,16 @@ function MedicalTeamDetail() {
     const [open, setOpen] = React.useState(false);
 
     useEffect(() => {
-        getMedTeam();
-    }, [params.id])
-
-    // fetch the medical provider
-    const getMedTeam = () => {
         dispatch({
             type: 'FETCH_MEDICAL_TEAM_DETAIL',
             payload: params.id
           })
-    }
+          return () => {
+            dispatch({
+              type: 'CLEAR_MEDICAL_TEAM_DETAIL'
+            })
+          }
+    }, [params.id])
 
     // toggles input fields between edit and read only
     const toggleEdit = () => {

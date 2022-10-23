@@ -72,6 +72,9 @@ function* deleteMedTeam(action) {
             url: `/medicalteam/${medteamToDelete}`,
             data: medteamToDelete
         })
+        yield put({
+            type: 'FETCH_MEDICAL_TEAM'
+        })
     }
     catch(err) {
         console.log('Error deleting medical provider:', err);

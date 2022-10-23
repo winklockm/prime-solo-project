@@ -24,15 +24,20 @@ function MedicationDetail() {
     const [open, setOpen] = React.useState(false);
 
     useEffect(() => {
-        getMedication();
-    }, [params.id])
-
-    // fetch the medication
-    const getMedication = () => {
         dispatch({
             type: 'FETCH_MEDICATION_DETAIL',
             payload: params.id
           })
+          return () => {
+            dispatch({
+              type: 'CLEAR_MEDICATION_DETAIL'
+            })
+          }
+    }, [params.id])
+
+    // fetch the medication
+    const getMedication = () => {
+
     }
 
     // toggles input fields between edit and read only

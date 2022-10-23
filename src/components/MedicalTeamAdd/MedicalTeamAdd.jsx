@@ -35,8 +35,8 @@ function MedicalTeamAdd() {
         setSpecialty('Neurology');
         setClinic('Mayo Clinic');
         setPhone('314-227-8489');
-        setPortal('www.mayoclinichealthsystem.org/patient-online-services');
-        setNextAppointment('11/12/2022');
+        setPortal('https://www.mayoclinichealthsystem.org/patient-online-services');
+        setNextAppointment('11/12/2022 12:20 PM');
         setComments('Second opinion');
     }
 

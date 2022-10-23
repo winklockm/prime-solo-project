@@ -56,7 +56,7 @@ function* updateMedication(action) {
             data: medicationToUpdate
         })
         yield put({
-            type: 'FETCH_MEDICATION'
+            type: 'FETCH_MEDICATIONS'
         })
     }
     catch(err) {
@@ -72,6 +72,9 @@ function* deleteMedication(action) {
             method: 'DELETE',
             url: `/medication/${medicationToDelete}`,
             data: medicationToDelete
+        })
+        yield put({
+            type: 'FETCH_MEDICATIONS'
         })
     }
     catch(err) {

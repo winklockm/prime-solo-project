@@ -74,6 +74,9 @@ function* deleteInsurance(action) {
             url: `/insurance/${insuranceToDelete}`,
             data: insuranceToDelete
         })
+        yield put({
+            type: 'FETCH_INSURANCE'
+        })
     }
     catch(err) {
         console.log('Error deleting insurance:', err);

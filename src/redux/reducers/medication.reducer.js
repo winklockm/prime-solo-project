@@ -15,6 +15,8 @@ const medicationDetailReducer = (state = [], action) => {
   switch (action.type) {
       case 'SET_MEDICATION_DETAIL':
         return action.payload;
+      case 'CLEAR_MEDICATION_DETAIL':
+          return [];
       case 'EDIT_MEDICATION_NAME':
         return {...state, name: action.payload}
       case 'EDIT_MEDICATION_INDICATION':
