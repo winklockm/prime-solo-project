@@ -21,6 +21,7 @@ import AboutPage from '../AboutPage/AboutPage';
 import MedicalTeamList from '../MedicalTeamList/MedicalTeamList';
 import MedicalTeamDetail from '../MedicalTeamDetail/MedicalTeamDetail';
 import MedicalTeamAdd from '../MedicalTeamAdd/MedicalTeamAdd';
+import MedicalTeamEdit from '../MedicalTeamEdit/MedicalTeamEdit';
 // Medication Imports
 import MedicationList from '../MedicationList/MedicationList';
 import MedicationDetail from '../MedicationDetail/MedicationDetail';
@@ -100,6 +101,11 @@ function App() {
           {/* // logged in shows medicalteam/detail/:id route with Detail component, else shows LoginPage */}
           <ProtectedRoute exact path="/medicalteam/detail/:id">
             <MedicalTeamDetail />
+          </ProtectedRoute>
+
+            {/* // logged in shows medicalteam/detail/:id route with Detail component, else shows LoginPage */}
+          <ProtectedRoute exact path="/medicalteam/detail/:id/edit">
+            <MedicalTeamEdit />
           </ProtectedRoute>
 
           {/* // logged in shows medicalteam/addnew route with AddNew component, else shows LoginPage */}

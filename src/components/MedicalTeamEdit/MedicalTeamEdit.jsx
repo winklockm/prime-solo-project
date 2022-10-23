@@ -1,72 +1,53 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router';
-import './MedicalTeamDetail.css';
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { useHistory, useParams } from 'react-router'
 // MUI Imports
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogTitle from '@mui/material/DialogTitle';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import dayjs from 'dayjs';
-import Typography from '@mui/material/Typography';
-// MUI Icons
-import PersonIcon from '@mui/icons-material/Person';
-import InsertCommentIcon from '@mui/icons-material/InsertComment';
-import PhoneIcon from '@mui/icons-material/Phone';
-import EditIcon from '@mui/icons-material/Edit';
-import ClearIcon from '@mui/icons-material/Clear';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
-function MedicalTeamDetail() {
+// import dayjs from 'dayjs';
+import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+
+function MedicalTeamEdit() {
     const params = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
-    const provider = useSelector(store => store.medicalteam.medicalteamDetailReducer);
-    // for dialog alert upon delete
-    const [open, setOpen] = React.useState(false);
-    const badDate = provider.next_appointment
-    const badTime = provider.next_appointment
-    const goodDate = dayjs(badDate).format("dddd, MMMM D, YYYY");
-    const goodTime = dayjs(badTime).format("h:mm A");
+    const medteamToEdit = useSelector(store => store.medicalteam.medicalteamDetailReducer);
 
     useEffect(() => {
+        getMedTeam();
+    }, [params.id])
+
+    // fetch the medical provider
+    const getMedTeam = () => {
         dispatch({
             type: 'FETCH_MEDICAL_TEAM_DETAIL',
             payload: params.id
           })
-    }, [params.id])
-
-    // toggles input fields between edit and read only
-    const toggleEdit = () => {
-      console.log('nav to edit')
-      history.push(`/medicalteam/detail/${params.id}/edit`)
     }
 
-    const handleDelete = () => {
-        console.log('in handleDelete');
+    const handleChangeAppointment = (value) => {
+        console.log('here is the date I am changing the appt to:', value);
         dispatch({
-            type: 'DELETE_MED_TEAM',
-            payload: params.id
-        })
-        history.push(`/medicalteam`)
+            type: 'EDIT_MEDTEAM_NEXT_APPOINTMENT', 
+            payload: value})
+        } 
+
+    // update the medical provider
+    const handleSave = (e) => {
+      e.preventDefault();
+      // dispatch updated medical team object to a saga function:
+      dispatch({
+        type: 'UPDATE_MEDTEAM',
+        payload: medteamToEdit
+      })
+      history.push(`/medicalteam/detail/${params.id}`)
     }
-
-    // for dialog alert upon delete
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
+  
     // return to medical team list
     const handleBack = () => {
         console.log('in handleBack');
@@ -75,60 +56,96 @@ function MedicalTeamDetail() {
 
     return (
         <Container maxWidth="sm">
-        <Card>
-            <Dialog
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-                >
-                    {/* confirm or cancel deletion */}
-                    <DialogTitle id="alert-dialog-title">
-                        {"Are you sure you want to delete?"}
-                    </DialogTitle>
-                    <DialogActions>
-                        <Button onClick={handleClose}>Cancel</Button>
-                        <Button onClick={handleDelete} autoFocus>
-                            Delete
-                        </Button>
-                        </DialogActions>
-                </Dialog>    
-                <CardContent>
-                    <Typography variant="h6"><PersonIcon/> {provider.name}</Typography>
-                    <Typography variant="h6">{provider.specialty}</Typography>
-                    <Typography variant="h6">{provider.clinic}</Typography>
-                    <Typography variant="h6">{provider.phone}</Typography>
-                    <Typography variant="h6">{provider.portal}</Typography>
-                    <Typography variant="h6">Next Appointment <CalendarMonthIcon/></Typography>
-                    <Typography variant="h6">{goodDate}</Typography>
-                    <Typography variant="h6">{goodTime}</Typography>
-                    <Typography variant="h6">{provider.comments}</Typography>
-                </CardContent>
-                
-                <CardActions>
-                    <Button onClick={toggleEdit} size="small" variant="outlined"><EditIcon /></Button>
-                    <Button onClick={handleClickOpen} size="small" variant="outlined"><ClearIcon /></Button>
-                </CardActions>
-             </Card>
-            <Button onClick={handleBack} size="small" variant="contained">Back</Button>
-         </Container>
+            <Stack
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            spacing={2}
+            >
+                {medteamToEdit && 
+                <Container maxWidth="sm" className='thisOne'>
+                        <Stack
+                        direction="column"
+                        justifyContent="center"
+                        alignItems="center"
+                        spacing={2}
+                        >
+                            <TextField
+                            multiline
+                            fullWidth
+                            id="outlined-read-only-input"
+                            label="name"
+                            value={medteamToEdit.name || ''}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_NAME', payload: e.target.value})}
+                            />
+                            <TextField
+                            multiline
+                            fullWidth
+                            id="outlined-read-only-input"
+                            label="specialty"
+                            value={medteamToEdit.specialty || ''}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_SPECIALTY', payload: e.target.value})}
+                            />
+                            <TextField
+                            multiline
+                            fullWidth
+                            id="outlined-read-only-input"
+                            label="clinic"
+                            value={medteamToEdit.clinic || ''}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_CLINIC', payload: e.target.value})}
+                            />
+                            <TextField
+                            multiline
+                            fullWidth
+                            id="outlined-read-only-input"
+                            label="phone"
+                            value={medteamToEdit.phone || ''}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_PHONE', payload: e.target.value})}
+                            />
+                            <TextField
+                            multiline
+                            fullWidth
+                            id="outlined-read-only-input"
+                            label="patient portal"
+                            value={medteamToEdit.portal || ''}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_PORTAL', payload: e.target.value})}
+                            />
+                            <TextField
+                            multiline
+                            fullWidth
+                            id="outlined-read-only-input"
+                            label="comments"
+                            value={medteamToEdit.comments || ''}
+                            onChange={(e) => dispatch({type: 'EDIT_MEDTEAM_COMMENTS', payload: e.target.value})}
+                            />
+                    
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <DateTimePicker
+                                    fullWidth
+                                    value={medteamToEdit.next_appointment}
+                                    onChange={handleChangeAppointment}
+                                    label="next appointment"
+                                    size="small"
+                                    renderInput={(params) => {
+                                        return <TextField {...params} />;
+                                    }}
+                                />
+                            </LocalizationProvider>
+                        </Stack>
+                    </Container>
+                }
+
+                <div>
+                    <Button onClick={handleSave}>Save</Button>
+                    <Button onClick={handleBack}>Cancel</Button>
+                </div>
+               
+             </Stack>
+        </Container>
     );
 }
 
-export default MedicalTeamDetail;
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default MedicalTeamEdit;
 
 
 
@@ -151,14 +168,13 @@ export default MedicalTeamDetail;
 // import TextField from '@mui/material/TextField';
 // import EditIcon from '@mui/icons-material/Edit';
 // import ClearIcon from '@mui/icons-material/Clear';
-// import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 // // import dayjs from 'dayjs';
 // import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 // import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
-// import './MedicalTeamDetail.css';
+// // import './MedicalTeamDetail.css';
 
-// function MedicalTeamDetail() {
+// function MedicalTeamEdit() {
 //     const params = useParams();
 //     const dispatch = useDispatch();
 //     const history = useHistory();
@@ -403,4 +419,4 @@ export default MedicalTeamDetail;
 //     );
 // }
 
-// export default MedicalTeamDetail;
+// export default MedicalTeamEdit;
