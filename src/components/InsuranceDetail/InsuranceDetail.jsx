@@ -12,6 +12,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { red } from '@mui/material/colors';
 
 function InsuranceDetail() {
     const params = useParams();
@@ -24,6 +25,10 @@ function InsuranceDetail() {
     const [open, setOpen] = React.useState(false);
 
     useEffect(() => {
+        getInsurance(); 
+    }, [params.id])
+
+    const getInsurance=() =>{
         dispatch({
             type: 'FETCH_INSURANCE_DETAIL',
             payload: params.id
@@ -33,7 +38,7 @@ function InsuranceDetail() {
               type: 'CLEAR_INSURANCE_DETAIL'
             })
           }
-    }, [params.id])
+    }
 
      // toggles input fields between edit and read only
      const toggleEdit = () => {
@@ -55,7 +60,7 @@ function InsuranceDetail() {
         const handleCancel = (e) => {
             e.preventDefault();
             // discard changes
-            getInsurance();
+            getInsurance()
             // make fields read only
             toggleEdit();
         }
@@ -96,9 +101,9 @@ function InsuranceDetail() {
 
 {/* disable delete button while editing */}
 { readOnly ?
-                    <Button onClick={handleClickOpen} size="small" variant="text"><DeleteForeverIcon /></Button>
+                    <Button onClick={handleClickOpen} size="small" variant="text"><DeleteForeverIcon sx={{ color: red[500] }}/></Button>
                 :
-                    <Button disabled onClick={handleClickOpen} size="small" variant="text"><DeleteForeverIcon /></Button>
+                    <Button disabled onClick={handleClickOpen} size="small" variant="text"><DeleteForeverIcon sx={{ color: red[500] }}/></Button>
                 }
                 {/* show dialog box when delete is clicked */}
                 

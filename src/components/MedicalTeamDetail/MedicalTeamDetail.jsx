@@ -167,6 +167,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import ClearIcon from '@mui/icons-material/Clear';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { red } from '@mui/material/colors';
 // import dayjs from 'dayjs';
 import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -183,6 +184,10 @@ function MedicalTeamDetail() {
     const [open, setOpen] = React.useState(false);
 
     useEffect(() => {
+        getMedTeam()
+    }, [params.id])
+
+    getMedTeam = () => {
         dispatch({
             type: 'FETCH_MEDICAL_TEAM_DETAIL',
             payload: params.id
@@ -192,7 +197,7 @@ function MedicalTeamDetail() {
               type: 'CLEAR_MEDICAL_TEAM_DETAIL'
             })
           }
-    }, [params.id])
+    }
 
     // toggles input fields between edit and read only
     const toggleEdit = () => {
@@ -261,9 +266,9 @@ function MedicalTeamDetail() {
           
                   {/* disable delete button while editing */}
                   { readOnly ?
-                    <Button onClick={handleClickOpen} size="small" variant="text"><DeleteForeverIcon /></Button>
+                    <Button onClick={handleClickOpen} size="small" variant="text"><DeleteForeverIcon sx={{ color: red[500] }}/></Button>
                 :
-                <Button disabled onClick={handleClickOpen} size="small" variant="text"><DeleteForeverIcon /></Button>
+                <Button disabled onClick={handleClickOpen} size="small" variant="text"><DeleteForeverIcon sx={{ color: red[500] }}/></Button>
                 }
                 {/* show dialog box when delete is clicked */}
 

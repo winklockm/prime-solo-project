@@ -12,6 +12,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { red } from '@mui/material/colors';
 
 function MedicationDetail() {
     const params = useParams();
@@ -24,6 +25,11 @@ function MedicationDetail() {
     const [open, setOpen] = React.useState(false);
 
     useEffect(() => {
+        getMedication();
+    }, [params.id])
+
+    // fetch the medication
+    const getMedication = () => {
         dispatch({
             type: 'FETCH_MEDICATION_DETAIL',
             payload: params.id
@@ -33,11 +39,6 @@ function MedicationDetail() {
               type: 'CLEAR_MEDICATION_DETAIL'
             })
           }
-    }, [params.id])
-
-    // fetch the medication
-    const getMedication = () => {
-
     }
 
     // toggles input fields between edit and read only
@@ -99,9 +100,9 @@ function MedicationDetail() {
             >
                 {/* disable delete button while editing */}
                 { readOnly ?
-                    <Button onClick={handleClickOpen} size="small" variant="text"><DeleteForeverIcon /></Button>
+                    <Button onClick={handleClickOpen} size="small" variant="text"><DeleteForeverIcon sx={{ color: red[500] }}/></Button>
                 :
-                    <Button disabled onClick={handleClickOpen} size="small" variant="text"><DeleteForeverIcon /></Button>
+                    <Button disabled onClick={handleClickOpen} size="small" variant="text"><DeleteForeverIcon sx={{ color: red[500] }}/></Button>
                 }
                 {/* show dialog box when delete is clicked */}
                 
