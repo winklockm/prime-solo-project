@@ -3,6 +3,8 @@ import './Header.css';
 import { useSelector } from 'react-redux';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
 
 function Header() {
   const user = useSelector((store) => store.user);
@@ -20,7 +22,8 @@ function Header() {
             alignItems="center"
             spacing={0}
             >
-              <h1 className='title'>TakeCare</h1>
+              {/* <h1 className='title'>TakeCare</h1> */}
+              <h1 className='large'><span className='takeLarge'>take</span ><span className='careLarge'>care</span></h1>
               <h2 className='subtitle'>caregiving. centralized.</h2>
             </Stack>
           </Container>
@@ -34,8 +37,10 @@ function Header() {
             justifyContent="space-between"
             alignItems="center"
             spacing={0}>
-              <h2 className='subtitle'>Picture</h2>
-              <h1 className='title'>TakeCare</h1>
+              {/* <h2 className='subtitle'>Picture</h2> */}
+              <Avatar className='thumbnail' src={user.patient_photo} sx={{width: 60, height: 60}} />
+              {/* <h1 className='title'>TakeCare</h1> */}
+              <h1><span className='take'>take</span ><span className='care'>care</span></h1>
             </Stack>
           </Container>
         )}

@@ -15,27 +15,32 @@ function MedicalTeamList() {
     const dispatch = useDispatch();
     const history = useHistory();
     const medicalteam = useSelector(store => store.medicalteam.medicalteamReducer);
+    const user = useSelector((store) => store.user);
 
     useEffect(() => {
         dispatch({
             type: 'FETCH_MEDICAL_TEAM'
         })
+        return () => {
+            dispatch({
+              type: 'CLEAR_MEDICAL_TEAM'
+            })
+          }
     }, [])
 
     console.log('this is medicalteam from store:', medicalteam);
 
     return (
         <Container className='listContainer' maxWidth="sm">
+            <Typography className='componentTitle'>{user.patient_name}'s Medical Providers</Typography>
             <Stack
                 className='listStack'
                 direction="column"
                 justifyContent="center"
                 alignItems="center"
-                spacing={2}
-            >
-                <Typography>Medical Providers</Typography>
-                {
-                    medicalteam.length > 0 ?
+                spacing={2}>  
+                
+                { medicalteam.length > 0 ?
                         <Stack spacing={2}>
                             {medicalteam.map(provider => (
                                 <MedicalTeamItem 
@@ -45,15 +50,14 @@ function MedicalTeamList() {
                             )}
                         </Stack>
                     :
-                        <p>No medical providers</p>
+                        <Typography>No medical providers</Typography>
                 }
                 
                 <Button
-                    onClick={() => {history.push('/medicalteam/addnew')}} 
-                    variant="outlined" 
-                    size="small"
-                ><AddIcon/>
-                    Add
+                onClick={() => {history.push('/medicalteam/addnew')}} 
+                variant="outlined" 
+                size="small">
+                    <AddIcon/>Add
                 </Button>
             </Stack>
         </Container>

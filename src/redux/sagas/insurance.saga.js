@@ -7,6 +7,9 @@ function* addInsurance(action) {
         const newInsurance = action.payload
         const newInsuranceRes = yield axios.post('/insurance', newInsurance);
         console.log('in addInsurance, newInsuranceRes is:', newInsuranceRes);
+        yield put({
+            type: 'FETCH_INSURANCE'
+        })
     } catch(error) {
         console.log('error in POST in addInsurance:', error);
     }
@@ -73,6 +76,9 @@ function* deleteInsurance(action) {
             method: 'DELETE',
             url: `/insurance/${insuranceToDelete}`,
             data: insuranceToDelete
+        })
+        yield put({
+            type: 'FETCH_INSURANCE'
         })
     }
     catch(err) {

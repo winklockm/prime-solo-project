@@ -5,21 +5,23 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
 
+// Component Imports
 import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import UserPage from '../UserPage/UserPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Overview from '../Overview/Overview';
 import BottomNav from '../BottomNav/BottomNav';
+import AboutPage from '../AboutPage/AboutPage';
+import './App.css';
 // Medical Team Imports
 import MedicalTeamList from '../MedicalTeamList/MedicalTeamList';
 import MedicalTeamDetail from '../MedicalTeamDetail/MedicalTeamDetail';
 import MedicalTeamAdd from '../MedicalTeamAdd/MedicalTeamAdd';
+import MedicalTeamEdit from '../MedicalTeamEdit/MedicalTeamEdit';
 // Medication Imports
 import MedicationList from '../MedicationList/MedicationList';
 import MedicationDetail from '../MedicationDetail/MedicationDetail';
@@ -29,7 +31,22 @@ import InsuranceList from '../InsuranceList/InsuranceList';
 import InsuranceDetail from '../InsuranceDetail/InsuranceDetail';
 import InsuranceAdd from '../InsuranceAdd/InsuranceAdd';
 
-import './App.css';
+// MUI Imports
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { teal } from '@mui/material/colors';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: teal[400],
+    },
+    secondary: {
+      main: teal[900],
+    },
+  },
+});
 
 function App() {
   const dispatch = useDispatch();
@@ -41,8 +58,11 @@ function App() {
   }, [dispatch]);
 
   return (
+    <ThemeProvider theme={darkTheme}>
     <Router>
       <div>
+      
+      <CssBaseline />
         <Header />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -66,6 +86,11 @@ function App() {
           {/* // logged in shows medicalteam/detail/:id route with Detail component, else shows LoginPage */}
           <ProtectedRoute exact path="/medicalteam/detail/:id">
             <MedicalTeamDetail />
+          </ProtectedRoute>
+
+            {/* // logged in shows medicalteam/detail/:id route with Detail component, else shows LoginPage */}
+          <ProtectedRoute exact path="/medicalteam/detail/:id/edit">
+            <MedicalTeamEdit />
           </ProtectedRoute>
 
           {/* // logged in shows medicalteam/addnew route with AddNew component, else shows LoginPage */}
@@ -136,15 +161,20 @@ function App() {
             }
           </Route>
 
+          <Route exact path='/about'>
+            <AboutPage />
+          </Route>
+
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>
           </Route>
         </Switch>
         <BottomNav />
-        {/* <Footer /> */}
+        
       </div>
     </Router>
+    </ThemeProvider>
   );
 
 }

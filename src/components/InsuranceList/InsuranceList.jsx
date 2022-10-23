@@ -14,24 +14,31 @@ function InsuranceList() {
     const dispatch = useDispatch();
     const history = useHistory();
     const insurance = useSelector(store => store.insurance.insuranceReducer);
+    const user = useSelector((store) => store.user);
 
     useEffect(() => {
         dispatch({
             type: 'FETCH_INSURANCE'
         })
+        return () => {
+            dispatch({
+              type: 'CLEAR_INSURANCE'
+            })
+          }
     }, [])
 
     console.log('in InsuranceList and insurance from store is:', insurance);
     return (
         <>
-        <Container maxWidth="sm">
+        <Container className='listContainer' maxWidth="sm">
+        <Typography className='componentTitle'>{user.patient_name}'s Insurance</Typography>
             <Stack
                 direction="column"
                 justifyContent="center"
                 alignItems="center"
                 spacing={2}
             >
-                <Typography>Insurance</Typography>
+              
                 {
                     insurance.length > 0 ?
                         <Stack spacing={2}>

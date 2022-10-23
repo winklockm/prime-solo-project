@@ -2,6 +2,7 @@ html,
 body,
 #react-root {
   height: 100%;
+  /* background-color: #000000; */
 }
 
 body {
@@ -125,8 +126,40 @@ Component Layout
   text-align: center;
   background-color: teal;
   color: white;
+  border-radius: 15px;
 }
 
 /* .componentBox {
   background-color: lightgray;
 } */
+
+
+.listContainer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.thisOne {
+  padding: 10px;
+}
+
+
+/* --------------------------------------------------------------------------------
+OVERVIEW
+-------------------------------------------------------------------------------- */
+
+.welcome {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.upcoming {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.log {
+  text-align: center;
+  padding-top: 20px;
+}

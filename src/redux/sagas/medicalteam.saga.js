@@ -40,6 +40,9 @@ function* addNewMedProvider(action) {
         const newMedProvider = action.payload
         const medProviderRes = yield axios.post('/medicalteam', newMedProvider);
         console.log('in addNewMedProvider, medProviderRes is:', medProviderRes);
+        yield put({
+            type: 'FETCH_MEDICAL_TEAM'
+        })
     } catch(error) {
         console.log('error in POST in addNewMedProvider:', error);
     }
@@ -71,6 +74,9 @@ function* deleteMedTeam(action) {
             method: 'DELETE',
             url: `/medicalteam/${medteamToDelete}`,
             data: medteamToDelete
+        })
+        yield put({
+            type: 'FETCH_MEDICAL_TEAM'
         })
     }
     catch(err) {

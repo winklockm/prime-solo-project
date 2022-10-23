@@ -1,27 +1,56 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import Appointment from './Appointment';
 import LogOutButton from '../LogOutButton/LogOutButton';
+
+// MUI IMPORTS
+import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
-import { useSelector } from 'react-redux';
-import './Overview.css';
 
 function Overview() {
-    const user = useSelector((store) => store.user);
 
-console.log('user is', user)
+    const user = useSelector((store) => store.user);
+    const medicalTeam = useSelector((store) => store.medicalteam.medicalteamReducer);
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    useEffect(() => {
+        dispatch({
+            type: 'FETCH_MEDICAL_TEAM'
+        })
+        dispatch({
+            type: 'FETCH_MEDICATIONS'
+        })
+        dispatch({
+            type: 'FETCH_INSURANCE'
+        })
+    }, []);
+
+    const handleAbout = () => {
+        history.push('/about');
+    }
+
+    console.log('user is', user)
+    console.log('from medicalteam reducer:', medicalTeam.length);
+
     return (
-        <>
-            <p className='welcome'>Welcome, {user.username}!</p>
-            <Container className='componentBox' maxWidth="sm">
-                <Stack spacing={2}>
-                    <p className='componentTitle'>This is the Overview component</p>
-                    <p>{user.patient_name} has:</p>
-                    <p># medical providers</p>
-                    <p># medications</p>
-                    <p># insurance plans</p>
-                    <LogOutButton />
-                </Stack>
-            </Container>
-        </>
+        <Container className='componentBox' maxWidth="sm">
+            <Typography color="text.secondary" variant="h5" className='welcome' onClick={handleAbout}>Welcome, {user.username}!</Typography>
+            <Typography className='componentTitle'>{user.patient_name}'s Upcoming Appointments</Typography>
+            <Stack
+            direction="column"
+            justifyContent="center"       
+            spacing={2}>  
+                { medicalTeam.map(provider => (
+                    <Appointment key={provider.id} provider={provider}/>
+                ))}
+            </Stack>
+                <div className='log'>
+                    <LogOutButton/>
+                </div>
+        </Container>
     )
 }
 

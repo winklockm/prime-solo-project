@@ -7,6 +7,9 @@ function* addMedication(action) {
         const newMedication = action.payload
         const newMedicationRes = yield axios.post('/medication', newMedication);
         console.log('in addMedication, newMedicationRes is:', newMedicationRes);
+        yield put({
+            type: 'FETCH_MEDICATIONS'
+        })
     } catch(error) {
         console.log('error in POST in addMedication:', error);
     }
@@ -56,7 +59,7 @@ function* updateMedication(action) {
             data: medicationToUpdate
         })
         yield put({
-            type: 'FETCH_MEDICATION'
+            type: 'FETCH_MEDICATIONS'
         })
     }
     catch(err) {
@@ -72,6 +75,9 @@ function* deleteMedication(action) {
             method: 'DELETE',
             url: `/medication/${medicationToDelete}`,
             data: medicationToDelete
+        })
+        yield put({
+            type: 'FETCH_MEDICATIONS'
         })
     }
     catch(err) {

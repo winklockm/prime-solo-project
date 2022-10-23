@@ -7,6 +7,9 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
+import dayjs from 'dayjs';
+import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 function MedicalTeamAdd() {
 
@@ -20,6 +23,22 @@ function MedicalTeamAdd() {
 
     const history = useHistory();
     const dispatch = useDispatch();
+
+
+    const handleNextAppt = (value) => {
+        console.log('in handleNextAppt. Value is:', value.$d)
+        setNextAppointment(value)
+    } 
+
+    const fillForm = () => {
+        setName('Dr. Singh');
+        setSpecialty('Neurology');
+        setClinic('Mayo Clinic');
+        setPhone('314-227-8489');
+        setPortal('https://www.mayoclinichealthsystem.org/patient-online-services');
+        setNextAppointment('11/12/2022 12:20 PM');
+        setComments('Second opinion');
+    }
 
     const handleAdd = () => {
         console.log('in handleClick');
@@ -50,7 +69,9 @@ function MedicalTeamAdd() {
 
     return (
         <Container maxWidth="sm">
-            <p className="componentTitle">Add Medical Provider</p>
+            <div onClick={fillForm}>
+                <p className="componentTitle">Add Medical Provider</p>
+            </div>
             <Stack
               direction="column"
               justifyContent="center"
@@ -103,25 +124,26 @@ function MedicalTeamAdd() {
                     onChange={(event) => setPortal(event.target.value)}
                     />
                 </div>
-
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DateTimePicker
+                        value={nextAppointment}
+                        onChange={handleNextAppt}
+                        label="next appointment" 
+                        variant="outlined" 
+                        size="small"
+                        renderInput={(params) => {
+                            return <TextField {...params} />;
+                        }}
+                    />
+                </LocalizationProvider>
                 <div>
                     <TextField
-                    label="next appointment" 
-                    variant="outlined" 
-                    size="small"
-                    value={nextAppointment}
-                    onChange={(event) => setNextAppointment(event.target.value)}
-                    />
-                </div>
-
-                <div>
-                <TextField
-                    label="comments" 
-                    variant="outlined" 
-                    size="small"
-                    value={comments}
-                    onChange={(event) => setComments(event.target.value)}
-                    />
+                        label="comments" 
+                        variant="outlined" 
+                        size="small"
+                        value={comments}
+                        onChange={(event) => setComments(event.target.value)}
+                        />
                 </div>
                 <Button           
                 variant="outlined" 

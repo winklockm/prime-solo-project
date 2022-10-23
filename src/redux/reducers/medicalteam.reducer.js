@@ -4,6 +4,8 @@ const medicalteamReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_MEDICAL_TEAM':
           return action.payload;
+        case 'CLEAR_MEDICAL_TEAM':
+          return [];
         default:
           return state;
     }
@@ -13,6 +15,8 @@ const medicalteamDetailReducer = (state = [], action) => {
   switch (action.type) {
       case 'SET_MEDICAL_TEAM_DETAIL':
         return action.payload;
+      case 'CLEAR_MEDICAL_TEAM_DETAIL':
+        return [];
       case 'EDIT_MEDTEAM_NAME':
         return {...state, name: action.payload}
       case 'EDIT_MEDTEAM_SPECIALTY':
