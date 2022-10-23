@@ -12,7 +12,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   const sqlText = `
     SELECT "id", "name", "specialty", "clinic", "next_appointment" FROM "medprovider"
       WHERE "patient_id"=$1
-        ORDER BY "name";`
+        ORDER BY "next_appointment";`
   ;
   const sqlValues = [req.user.patient_id]
   pool.query(sqlText, sqlValues)

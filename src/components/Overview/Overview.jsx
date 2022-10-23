@@ -42,15 +42,14 @@ console.log('user is', user)
 console.log('from medicalteam reducer:', medicalTeam.length);
     return (
         <Container className='componentBox' maxWidth="sm">
-            <Typography variant="h5" className='welcome' onClick={handleAbout}>Welcome, {user.username}!</Typography>
+            <Typography color="text.secondary" variant="h5" className='welcome' onClick={handleAbout}>Welcome, {user.username}!</Typography>
             
-                    <Typography variant="h6" className='componentTitle'>{user.patient_name} has:</Typography>
+                    <Typography className='componentTitle'>{user.patient_name}'s Upcoming Appointments</Typography>
                     <Stack
                     direction="column"
                     justifyContent="center"       
                     spacing={2}>  
                     
-                    <Typography>Upcoming Appointments:</Typography>
                     {/* { medicalTeam.length>1 || medicalTeam.length<=0 ?
                         <Typography>{medicalTeam.length} medical providers</Typography> :
                         <Typography>{medicalTeam.length} medical provider</Typography>
@@ -71,8 +70,9 @@ console.log('from medicalteam reducer:', medicalTeam.length);
                     } */}
 
                 </Stack>
-           
-                <LogOutButton />
+                <div className='log'>
+                    <LogOutButton/>
+                </div>
             </Container>
     )
 }

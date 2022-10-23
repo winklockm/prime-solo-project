@@ -45,9 +45,9 @@ const darkTheme = createTheme({
     primary: {
       main: teal[400],
     },
-    // secondary: {
-    //   main: purple[500],
-    // },
+    secondary: {
+      main: teal[900],
+    },
   },
 });
 

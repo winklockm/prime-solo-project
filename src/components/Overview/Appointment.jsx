@@ -5,6 +5,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import Card from '@mui/material/Card';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import {useHistory} from 'react-router-dom';
+import './Appointment.css';
 
 function Appointment({provider}) {
 
@@ -18,10 +19,10 @@ function Appointment({provider}) {
     } 
     return (
             <Card
-            sx={{ minWidth: 300 }} 
             key={provider.id}
             onClick={handleClick}>
                 <Stack
+                className='apptCard'
                 direction="row"
                 justifyContent="space-between"
                 alignItems="center"
@@ -32,13 +33,13 @@ function Appointment({provider}) {
                     alignItems="center"
                     spacing={2}>
                         <CalendarMonthIcon/> 
-                        <div>
-                            <Typography >{date}</Typography>
-                            <Typography >{time}</Typography>
+                        <div >
+                            <Typography color="text.secondary">{date}</Typography>
+                            <Typography color="text.secondary">{time}</Typography>
                             <Typography color="text.secondary">{provider.name}</Typography>
                         </div>
                     </Stack>  
-                    <ArrowForwardIosIcon color="text.secondary"/>
+                    <ArrowForwardIosIcon color="secondary"/>
                 </Stack>
             </Card>
     )
