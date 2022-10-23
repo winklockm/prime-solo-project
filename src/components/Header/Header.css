@@ -1,12 +1,14 @@
-/* .header {
-  background-color: black;
-  color: white
-} */
+.header {
+  /* background-color: rgb(53, 53, 53); */
+  border-bottom: solid;
+  border-color: teal;
+  border-width: 1px;
+}
 
 .header-large {
   /* background-color: black;
   color: white; */
-  padding: 5vh;
+  padding: 2vh;
 }
 
 .title {
@@ -17,4 +19,41 @@
 .subtitle {
   font-weight: normal;
   font-size: 17px;
+  margin-top: 0;
+  color: rgb(189, 189, 189)
+}
+
+.thumbnail {
+  border-color: white;
+}
+
+.take {
+  color: rgb(223, 223, 223);
+  font-weight: normal;
+  font-size: 25px;
+}
+
+.care {
+  color: teal;
+  font-weight: bold;
+  letter-spacing: .1px;
+  font-size: 40px;
+}
+
+.takeLarge {
+  color: rgb(223, 223, 223);
+  font-weight: normal;
+  font-size: 45px;
+}
+
+.careLarge {
+  color: teal;
+  font-weight: bold;
+  letter-spacing: .1px;
+  font-size: 60px;
+}
+
+
+.large {
+  margin-bottom: 0;
 }
