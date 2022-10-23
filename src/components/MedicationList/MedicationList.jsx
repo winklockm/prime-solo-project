@@ -23,7 +23,7 @@ function MedicationList() {
     }, [])
 
     return (
-        <Container maxWidth="sm">
+        <Container className='listContainer' maxWidth="sm">
             <Typography variant="h6" className='componentTitle'>{user.patient_name}'s Medications</Typography>
             <Stack
                 direction="column"

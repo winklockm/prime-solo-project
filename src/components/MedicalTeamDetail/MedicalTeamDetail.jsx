@@ -94,15 +94,27 @@ function MedicalTeamDetail() {
                         </DialogActions>
                 </Dialog>    
                 <CardContent>
-                    <Typography variant="h6"><PersonIcon/> {provider.name}</Typography>
-                    <Typography variant="h6">{provider.specialty}</Typography>
-                    <Typography variant="h6">{provider.clinic}</Typography>
-                    <Typography variant="h6">{provider.phone}</Typography>
-                    <Typography variant="h6">{provider.portal}</Typography>
-                    <Typography variant="h6">Next Appointment <CalendarMonthIcon/></Typography>
-                    <Typography variant="h6">{goodDate}</Typography>
-                    <Typography variant="h6">{goodTime}</Typography>
-                    <Typography variant="h6">{provider.comments}</Typography>
+
+                    <div className='one'>
+                        <Typography variant="h6">{provider.name}</Typography>
+    
+                    <Typography variant="body1" color="text.secondary">{provider.specialty}</Typography>
+                    <Typography variant="body2" color="text.secondary">{provider.clinic}</Typography>
+                    </div>
+                    <div className='one'>
+                    <Typography variant="body1">{provider.phone}</Typography>
+                    <a href={provider.portal} target="_blank"> {provider.portal}</a>
+                    </div>
+                    <div className='one'>
+                    <Typography variant="subtitle1">Notes:</Typography>
+                    <Typography variant="body1" color="text.secondary">{provider.comments}</Typography>
+                    </div>
+                    <div className='one'>
+                    <Typography variant="subtitle1">Next Appointment:</Typography>
+                    <Typography variant="body1" color="text.secondary">{goodDate}</Typography>
+                    <Typography variant="body1" color="text.secondary">{goodTime}</Typography>
+                    </div>
+                   
                 </CardContent>
                 
                 <CardActions>
@@ -110,7 +122,9 @@ function MedicalTeamDetail() {
                     <Button onClick={handleClickOpen} size="small" variant="outlined"><ClearIcon /></Button>
                 </CardActions>
              </Card>
-            <Button onClick={handleBack} size="small" variant="contained">Back</Button>
+             <div className='medteamback' >
+            <Button  onClick={handleBack} size="small" variant="contained">Back</Button>
+            </div>
          </Container>
     );
 }

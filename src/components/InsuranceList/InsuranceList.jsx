@@ -25,7 +25,7 @@ function InsuranceList() {
     console.log('in InsuranceList and insurance from store is:', insurance);
     return (
         <>
-        <Container maxWidth="sm">
+        <Container className='listContainer' maxWidth="sm">
         <Typography variant="h6" className='componentTitle'>{user.patient_name}'s Insurance</Typography>
             <Stack
                 direction="column"
