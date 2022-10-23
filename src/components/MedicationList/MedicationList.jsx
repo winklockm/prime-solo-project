@@ -20,6 +20,11 @@ function MedicationList() {
         dispatch({
             type: 'FETCH_MEDICATIONS'
         })
+        return () => {
+            dispatch({
+              type: 'CLEAR_MEDICATIONS'
+            })
+          }
     }, [])
 
     return (

@@ -21,6 +21,11 @@ function MedicalTeamList() {
         dispatch({
             type: 'FETCH_MEDICAL_TEAM'
         })
+        return () => {
+            dispatch({
+              type: 'CLEAR_MEDICAL_TEAM'
+            })
+          }
     }, [])
 
     console.log('this is medicalteam from store:', medicalteam);
@@ -33,11 +38,9 @@ function MedicalTeamList() {
                 direction="column"
                 justifyContent="center"
                 alignItems="center"
-                spacing={2}
-            >
+                spacing={2}>  
                 
-                {
-                    medicalteam.length > 0 ?
+                { medicalteam.length > 0 ?
                         <Stack spacing={2}>
                             {medicalteam.map(provider => (
                                 <MedicalTeamItem 
@@ -51,11 +54,10 @@ function MedicalTeamList() {
                 }
                 
                 <Button
-                    onClick={() => {history.push('/medicalteam/addnew')}} 
-                    variant="outlined" 
-                    size="small"
-                ><AddIcon/>
-                    Add
+                onClick={() => {history.push('/medicalteam/addnew')}} 
+                variant="outlined" 
+                size="small">
+                    <AddIcon/>Add
                 </Button>
             </Stack>
         </Container>

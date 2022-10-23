@@ -20,6 +20,11 @@ function InsuranceList() {
         dispatch({
             type: 'FETCH_INSURANCE'
         })
+        return () => {
+            dispatch({
+              type: 'CLEAR_INSURANCE'
+            })
+          }
     }, [])
 
     console.log('in InsuranceList and insurance from store is:', insurance);

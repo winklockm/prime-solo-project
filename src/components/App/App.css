@@ -141,3 +141,24 @@ Component Layout
 .thisOne {
   padding: 10px;
 }
+
+
+/* --------------------------------------------------------------------------------
+OVERVIEW
+-------------------------------------------------------------------------------- */
+
+.welcome {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.upcoming {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.log {
+  text-align: center;
+  padding-top: 20px;
+}

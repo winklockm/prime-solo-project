@@ -4,6 +4,8 @@ const insuranceReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_INSURANCE':
           return action.payload;
+        case 'CLEAR_INSURANCE':
+          return [];
         default:
           return state;
     }

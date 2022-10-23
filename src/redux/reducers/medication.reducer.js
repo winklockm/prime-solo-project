@@ -4,6 +4,8 @@ const medicationReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_MEDICATIONS':
           return action.payload;
+        case 'CLEAR_MEDICATIONS':
+            return [];
         default:
           return state;
     }

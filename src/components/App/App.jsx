@@ -5,10 +5,10 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
+
+// Component Imports
 import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import UserPage from '../UserPage/UserPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -16,7 +16,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import Overview from '../Overview/Overview';
 import BottomNav from '../BottomNav/BottomNav';
 import AboutPage from '../AboutPage/AboutPage';
-
+import './App.css';
 // Medical Team Imports
 import MedicalTeamList from '../MedicalTeamList/MedicalTeamList';
 import MedicalTeamDetail from '../MedicalTeamDetail/MedicalTeamDetail';
@@ -31,13 +31,10 @@ import InsuranceList from '../InsuranceList/InsuranceList';
 import InsuranceDetail from '../InsuranceDetail/InsuranceDetail';
 import InsuranceAdd from '../InsuranceAdd/InsuranceAdd';
 
-
-import './App.css';
 // MUI Imports
-import { red } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { green, teal, purple } from '@mui/material/colors';
+import { teal } from '@mui/material/colors';
 
 const darkTheme = createTheme({
   palette: {
@@ -51,17 +48,6 @@ const darkTheme = createTheme({
   },
 });
 
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//       main: teal[500],
-//     },
-//     secondary: {
-//       main: purple[500],
-//     },
-//   },
-// });
-
 function App() {
   const dispatch = useDispatch();
 
@@ -73,7 +59,6 @@ function App() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-    {/* <ThemeProvider theme={theme}> */}
     <Router>
       <div>
       

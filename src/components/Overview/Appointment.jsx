@@ -1,11 +1,13 @@
-import dayjs from 'dayjs';
-import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import Card from '@mui/material/Card';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useHistory } from 'react-router-dom';
 import './Appointment.css';
+import dayjs from 'dayjs';
+
+// MUI IMPORTS
+import Card from '@mui/material/Card';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 function Appointment({provider}) {
 
@@ -17,6 +19,7 @@ function Appointment({provider}) {
         console.log('in handleClick. Provider.id is:', provider.id);
         history.push(`/medicalteam/detail/${provider.id}`);
     } 
+    
     return (
             <Card
             key={provider.id}
@@ -43,7 +46,7 @@ function Appointment({provider}) {
                      </Stack>  
                      {/* REMOVING FOR PRESENTATION
                      <ArrowForwardIosIcon color="secondary"/> */}
-                    </Stack>
+                </Stack>
             </Card>
     )
 }
