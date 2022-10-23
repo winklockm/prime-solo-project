@@ -11,6 +11,7 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 function MedicationDetail() {
     const params = useParams();
@@ -84,27 +85,40 @@ function MedicationDetail() {
     }
 
     return (
-        <Container maxWidth="sm">
+        <Container className='listContainer' maxWidth="sm">
             <Stack
-            direction="column"
-            justifyContent="center"
+            direction="row"
+            justifyContent="space-between"
             alignItems="center"
             spacing={2}
             >
-
+                {/* disable delete button while editing */}
+                { readOnly ?
+                    <Button onClick={handleClickOpen} size="small" variant="text"><DeleteForeverIcon /></Button>
+                :
+                    <Button disabled onClick={handleClickOpen} size="small" variant="text"><DeleteForeverIcon /></Button>
+                }
+                {/* show dialog box when delete is clicked */}
+                
                 {/* show edit button while in read only mode, otherwise show save and cancel buttons while editing */}
                 { readOnly ?
-                    <Button onClick={toggleEdit} size="small" variant="contained">Edit</Button>
+                    <Button onClick={toggleEdit} size="small" variant="text">Edit</Button>
                 :
                 <div>
                     <Button onClick={handleSave}>Save</Button>
                     <Button onClick={handleCancel}>Cancel</Button>
                 </div>
                 }
-
+                </Stack>
                 {/* show dialog box when delete is clicked */}
-                <Button onClick={handleClickOpen} size="small" variant="contained">Delete</Button>
+                {/* <Button onClick={handleClickOpen} size="small" variant="contained">Delete</Button> */}
 
+                <Stack
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                spacing={2}
+                >
                 <Dialog
                 open={open}
                 onClose={handleClose}
@@ -124,7 +138,7 @@ function MedicationDetail() {
                 </Dialog>
 
                 {medicationToEdit && 
-                    <form>
+                    <Container className='thisOne' maxWidth="sm" >
                         <Stack
                         direction="column"
                         justifyContent="center"
@@ -134,60 +148,60 @@ function MedicationDetail() {
                             {/* text fields toggle between read only and edit */}
                             <TextField
                             multiline
+                            fullWidth
                             id="outlined-read-only-input"
                             label="name"
-                            size="small"
                             value={medicationToEdit.name || ''}
                             InputProps={{readOnly: readOnly}}
                             onChange={(e) => dispatch({type: 'EDIT_MEDICATION_NAME', payload: e.target.value})}
                             />
                             <TextField
                             multiline
+                            fullWidth
                             id="outlined-read-only-input"
                             label="indication"
-                            size="small"
                             value={medicationToEdit.indication || ''}
                             InputProps={{readOnly: readOnly}}
                             onChange={(e) => dispatch({type: 'EDIT_MEDICATION_INDICATION', payload: e.target.value})}
                             />
                             <TextField
                             multiline
+                            fullWidth
                             id="outlined-read-only-input"
                             label="dose"
-                            size="small"
                             value={medicationToEdit.dose || ''}
                             InputProps={{readOnly: readOnly}}
                             onChange={(e) => dispatch({type: 'EDIT_MEDICATION_DOSE', payload: e.target.value})}
                             />
                             <TextField
                             multiline
+                            fullWidth
                             id="outlined-read-only-input"
                             label="frequency"
-                            size="small"
                             value={medicationToEdit.frequency || ''}
                             InputProps={{readOnly: readOnly}}
                             onChange={(e) => dispatch({type: 'EDIT_MEDICATION_FREQUENCY', payload: e.target.value})}
                             />
                             <TextField
                             multiline
+                            fullWidth
                             id="outlined-read-only-input"
                             label="route"
-                            size="small"
                             value={medicationToEdit.route || ''}
                             InputProps={{readOnly: readOnly}}
                             onChange={(e) => dispatch({type: 'EDIT_MEDICATION_ROUTE', payload: e.target.value})}
                             />
                             <TextField
                             multiline
+                            fullWidth
                             id="outlined-read-only-input"
                             label="notes"
-                            size="small"
                             value={medicationToEdit.notes || ''}
                             InputProps={{readOnly: readOnly}}
                             onChange={(e) => dispatch({type: 'EDIT_MEDICATION_NOTES', payload: e.target.value})}
                             />
                         </Stack>
-                    </form>
+                    </Container>
                 }
 
                 {/* disable back button while editing */}

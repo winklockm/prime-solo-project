@@ -4,7 +4,7 @@ import Stack from '@mui/material/Stack';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import Card from '@mui/material/Card';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './Appointment.css';
 
 function Appointment({provider}) {
@@ -20,7 +20,9 @@ function Appointment({provider}) {
     return (
             <Card
             key={provider.id}
-            onClick={handleClick}>
+            // removing onClick for presentation
+            // onClick={handleClick}
+            >
                 <Stack
                 className='apptCard'
                 direction="row"
@@ -38,9 +40,10 @@ function Appointment({provider}) {
                             <Typography color="text.secondary">{time}</Typography>
                             <Typography color="text.secondary">{provider.name}</Typography>
                         </div>
-                    </Stack>  
-                    <ArrowForwardIosIcon color="secondary"/>
-                </Stack>
+                     </Stack>  
+                     {/* REMOVING FOR PRESENTATION
+                     <ArrowForwardIosIcon color="secondary"/> */}
+                    </Stack>
             </Card>
     )
 }

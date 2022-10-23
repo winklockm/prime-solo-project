@@ -137,3 +137,7 @@ Component Layout
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+.thisOne {
+  padding: 10px;
+}
