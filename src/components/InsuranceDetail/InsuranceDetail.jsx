@@ -13,6 +13,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { red } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
+import EditIcon from '@mui/icons-material/Edit';
 
 function InsuranceDetail() {
     const params = useParams();
@@ -109,7 +111,7 @@ function InsuranceDetail() {
                 
                 {/* show edit button while in read only mode, otherwise show save and cancel buttons while editing */}
                 { readOnly ?
-                    <Button onClick={toggleEdit} size="small" variant="text">Edit</Button>
+                    <Button onClick={toggleEdit} size="small" variant="text"><EditIcon sx={{ color: blue[500] }}/></Button>
                 :
                 <div>
                     <Button onClick={handleSave}>Save</Button>

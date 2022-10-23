@@ -171,6 +171,7 @@ import { red } from '@mui/material/colors';
 // import dayjs from 'dayjs';
 import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { blue } from '@mui/material/colors';
 
 import './MedicalTeamDetail.css';
 
@@ -187,7 +188,7 @@ function MedicalTeamDetail() {
         getMedTeam()
     }, [params.id])
 
-    getMedTeam = () => {
+    const getMedTeam = () => {
         dispatch({
             type: 'FETCH_MEDICAL_TEAM_DETAIL',
             payload: params.id
@@ -274,7 +275,7 @@ function MedicalTeamDetail() {
 
             {/* show edit button while in read only mode, otherwise show save and cancel buttons while editing */}
                 { readOnly ?
-                    <Button onClick={toggleEdit} size="small" variant="text"><EditIcon /></Button>
+                    <Button onClick={toggleEdit} size="small" variant="text"><EditIcon sx={{ color: blue[500] }}/></Button>
                 :
                 <div>
                     <Button onClick={handleSave}>Save</Button>
