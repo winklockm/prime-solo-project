@@ -6,6 +6,12 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import './Overview.css';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import dayjs from 'dayjs';
+import Appointment from './Appointment';
 
 function Overview() {
     const user = useSelector((store) => store.user);
@@ -34,32 +40,40 @@ function Overview() {
 console.log('user is', user)
 console.log('from medicalteam reducer:', medicalTeam.length);
     return (
-        <>
-            <p className='welcome' onClick={handleAbout}>Welcome, {user.username}!</p>
-            <Container className='componentBox' maxWidth="sm">
-                <Stack spacing={2}>
+        <Container className='componentBox' maxWidth="sm">
+            <Typography variant="h5" className='welcome' onClick={handleAbout}>Welcome, {user.username}!</Typography>
+                <Card>
+                    <Typography variant="h6" className='componentTitle'>{user.patient_name} has:</Typography>
+                    <Stack
+                    className='listStack'
+                    direction="column"
+                    justifyContent="center"       
+                    spacing={2}>  
                     
-                    <p className='componentTitle'>{user.patient_name} has:</p>
-                    
-                    { medicalTeam.length>1 || medicalTeam.length<=0 ?
-                        <p>{medicalTeam.length} medical providers</p> :
-                        <p>{medicalTeam.length} medical provider</p>
-                    }
+                    <Typography>Upcoming Appointments:</Typography>
+                    {/* { medicalTeam.length>1 || medicalTeam.length<=0 ?
+                        <Typography>{medicalTeam.length} medical providers</Typography> :
+                        <Typography>{medicalTeam.length} medical provider</Typography>
+                    } */}
+     
+                    { medicalTeam.map(provider => (
+                        <Appointment key={provider.id} provider={provider}/>
+                    ))}
 
-                    { medications.length>1 || medications.length<=0 ?
-                        <p>{medications.length} medications</p> :
-                        <p>{medications.length} medication</p>
-                    }
+                    {/* { medications.length>1 || medications.length<=0 ?
+                        <Typography>{medications.length} medications</Typography> :
+                        <Typography>{medications.length} medication</Typography>
+                    } */}
 
-                    { insurance.length>1 || insurance.length<=0 ?
-                        <p>{insurance.length} insurance plans</p> :
-                        <p>{insurance.length} insurance plan</p>
-                    }
+                    {/* { insurance.length>1 || insurance.length<=0 ?
+                        <Typography>{insurance.length} insurance plans</Typography> :
+                        <Typography>{insurance.length} insurance plan</Typography>
+                    } */}
 
-                    <LogOutButton />
                 </Stack>
+                </Card>
+                <LogOutButton />
             </Container>
-        </>
     )
 }
 

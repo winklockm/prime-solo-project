@@ -15,6 +15,7 @@ function MedicalTeamList() {
     const dispatch = useDispatch();
     const history = useHistory();
     const medicalteam = useSelector(store => store.medicalteam.medicalteamReducer);
+    const user = useSelector((store) => store.user);
 
     useEffect(() => {
         dispatch({
@@ -26,6 +27,7 @@ function MedicalTeamList() {
 
     return (
         <Container className='listContainer' maxWidth="sm">
+            <Typography variant="h6" className='componentTitle'>{user.patient_name}'s Medical Providers</Typography>
             <Stack
                 className='listStack'
                 direction="column"
@@ -33,7 +35,7 @@ function MedicalTeamList() {
                 alignItems="center"
                 spacing={2}
             >
-                <Typography>Medical Providers</Typography>
+                
                 {
                     medicalteam.length > 0 ?
                         <Stack spacing={2}>
@@ -45,7 +47,7 @@ function MedicalTeamList() {
                             )}
                         </Stack>
                     :
-                        <p>No medical providers</p>
+                        <Typography>No medical providers</Typography>
                 }
                 
                 <Button

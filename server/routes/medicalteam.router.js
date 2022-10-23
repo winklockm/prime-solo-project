@@ -10,7 +10,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   console.log('GET /medicalteam');
   console.log('this is req.user.patient_id:', req.user.patient_id);
   const sqlText = `
-    SELECT "id", "name", "specialty", "clinic" FROM "medprovider"
+    SELECT "id", "name", "specialty", "clinic", "next_appointment" FROM "medprovider"
       WHERE "patient_id"=$1
         ORDER BY "name";`
   ;

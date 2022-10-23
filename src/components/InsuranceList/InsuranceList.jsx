@@ -14,6 +14,7 @@ function InsuranceList() {
     const dispatch = useDispatch();
     const history = useHistory();
     const insurance = useSelector(store => store.insurance.insuranceReducer);
+    const user = useSelector((store) => store.user);
 
     useEffect(() => {
         dispatch({
@@ -25,13 +26,14 @@ function InsuranceList() {
     return (
         <>
         <Container maxWidth="sm">
+        <Typography variant="h6" className='componentTitle'>{user.patient_name}'s Insurance</Typography>
             <Stack
                 direction="column"
                 justifyContent="center"
                 alignItems="center"
                 spacing={2}
             >
-                <Typography>Insurance</Typography>
+              
                 {
                     insurance.length > 0 ?
                         <Stack spacing={2}>

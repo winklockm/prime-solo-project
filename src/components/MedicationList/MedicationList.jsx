@@ -14,6 +14,7 @@ function MedicationList() {
     const dispatch = useDispatch();
     const history = useHistory();
     const medications = useSelector(store => store.medication.medicationReducer);
+    const user = useSelector((store) => store.user);
     
     useEffect(() => {
         dispatch({
@@ -23,13 +24,13 @@ function MedicationList() {
 
     return (
         <Container maxWidth="sm">
+            <Typography variant="h6" className='componentTitle'>{user.patient_name}'s Medications</Typography>
             <Stack
                 direction="column"
                 justifyContent="center"
                 alignItems="center"
                 spacing={2}
             >
-                <Typography>Medications</Typography>
                 {
                     medications.length > 0 ?
                         <Stack spacing={2}>
