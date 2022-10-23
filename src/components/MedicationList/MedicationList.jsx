@@ -29,7 +29,7 @@ function MedicationList() {
 
     return (
         <Container className='listContainer' maxWidth="sm">
-            <Typography variant="h6" className='componentTitle'>{user.patient_name}'s Medications</Typography>
+            <Typography className='componentTitle'>{user.patient_name}'s Medications</Typography>
             <Stack
                 direction="column"
                 justifyContent="center"

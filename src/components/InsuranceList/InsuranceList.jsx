@@ -31,7 +31,7 @@ function InsuranceList() {
     return (
         <>
         <Container className='listContainer' maxWidth="sm">
-        <Typography variant="h6" className='componentTitle'>{user.patient_name}'s Insurance</Typography>
+        <Typography className='componentTitle'>{user.patient_name}'s Insurance</Typography>
             <Stack
                 direction="column"
                 justifyContent="center"

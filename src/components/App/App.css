@@ -126,6 +126,7 @@ Component Layout
   text-align: center;
   background-color: teal;
   color: white;
+  border-radius: 15px;
 }
 
 /* .componentBox {

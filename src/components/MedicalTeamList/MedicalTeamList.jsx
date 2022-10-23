@@ -32,7 +32,7 @@ function MedicalTeamList() {
 
     return (
         <Container className='listContainer' maxWidth="sm">
-            <Typography variant="h6" className='componentTitle'>{user.patient_name}'s Medical Providers</Typography>
+            <Typography className='componentTitle'>{user.patient_name}'s Medical Providers</Typography>
             <Stack
                 className='listStack'
                 direction="column"
