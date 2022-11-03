@@ -53,66 +53,53 @@ function InsuranceAdd() {
               alignItems="center"
               spacing={2}
             >
-                <div>
-                    <TextField
+                <TextField
                     label="provider" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     required
                     value={provider}
                     onChange={(event) => setProvider(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <TextField
+                />
+                <TextField
                     label="group number" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     value={group}
                     onChange={(event) => setGroup(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <TextField
+                />
+                <TextField
                     label="id number" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     value={idNumber}
                     onChange={(event) => setIdNumber(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <TextField
+                />
+                <TextField
                     label="plan name" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     value={plan}
                     onChange={(event) => setPlan(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <TextField
+                />
+                <TextField
                     label="phone number" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     value={phone}
                     onChange={(event) => setPhone(event.target.value)}
-                    />
-                </div>
-
-                <div>
-                    <TextField
+                />
+                <TextField
                     label="notes" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     value={notes}
                     onChange={(event) => setNotes(event.target.value)}
-                    />
-                </div>
+                />
                 <Button           
-                variant="outlined" 
-                size="small"
-                onClick={handleAdd}
+                    variant="outlined" 
+                    fullWidth
+                    onClick={handleAdd}
                 >
                     Save
                 </Button>

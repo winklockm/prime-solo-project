@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from 'react-redux';
 // Component Imports
 import Header from '../Header/Header';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import UserPage from '../UserPage/UserPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Overview from '../Overview/Overview';
