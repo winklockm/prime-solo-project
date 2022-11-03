@@ -22,9 +22,9 @@ import MedicalTeamList from '../MedTeam/MedicalTeamList';
 import MedicalTeamDetail from '../MedTeam/MedicalTeamDetail';
 import MedicalTeamAdd from '../MedTeam/MedicalTeamAdd';
 // Medication Imports
-import MedicationList from '../MedicationList/MedicationList';
-import MedicationDetail from '../MedicationDetail/MedicationDetail';
-import MedicationAdd from '../MedicationAdd/MedicationAdd';
+import MedicationList from '../Medication/MedicationList';
+import MedicationDetail from '../Medication/MedicationDetail';
+import MedicationAdd from '../Medication/MedicationAdd';
 //Insurance Imports
 import InsuranceList from '../InsuranceList/InsuranceList';
 import InsuranceDetail from '../InsuranceDetail/InsuranceDetail';
