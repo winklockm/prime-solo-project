@@ -26,9 +26,9 @@ import MedicationList from '../Medication/MedicationList';
 import MedicationDetail from '../Medication/MedicationDetail';
 import MedicationAdd from '../Medication/MedicationAdd';
 //Insurance Imports
-import InsuranceList from '../InsuranceList/InsuranceList';
-import InsuranceDetail from '../InsuranceDetail/InsuranceDetail';
-import InsuranceAdd from '../InsuranceAdd/InsuranceAdd';
+import InsuranceList from '../Insurance/InsuranceList';
+import InsuranceDetail from '../Insurance/InsuranceDetail';
+import InsuranceAdd from '../Insurance/InsuranceAdd';
 
 // MUI Imports
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -86,11 +86,6 @@ function App() {
           <ProtectedRoute exact path="/medicalteam/detail/:id">
             <MedicalTeamDetail />
           </ProtectedRoute>
-
-            {/* // logged in shows medicalteam/detail/:id route with Detail component, else shows LoginPage */}
-          {/* <ProtectedRoute exact path="/medicalteam/detail/:id/edit">
-            <MedicalTeamEdit />
-          </ProtectedRoute> */}
 
           {/* // logged in shows medicalteam/addnew route with AddNew component, else shows LoginPage */}
           <ProtectedRoute exact path="/medicalteam/addnew">

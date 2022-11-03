@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import InsuranceItem from "../InsuranceItem/InsuranceItem";
+import InsuranceItem from "./InsuranceItem";
 
 // MUI Imports
 import AddIcon from '@mui/icons-material/Add';
