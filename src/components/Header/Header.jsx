@@ -40,7 +40,7 @@ function Header() {
               {/* <h2 className='subtitle'>Picture</h2> */}
               <Avatar className='thumbnail' src={user.patient_photo} sx={{width: 60, height: 60}} />
               {/* <h1 className='title'>TakeCare</h1> */}
-              <h1><span className='take'>take</span ><span className='care'>care</span></h1>
+              <h1 className='headerh1'><span className='take'>take</span ><span className='care'>care</span></h1>
             </Stack>
           </Container>
         )}

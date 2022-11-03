@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import dayjs from 'dayjs';
 import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
@@ -36,7 +35,7 @@ function MedicalTeamAdd() {
         setClinic('Mayo Clinic');
         setPhone('314-227-8489');
         setPortal('https://www.mayoclinichealthsystem.org/patient-online-services');
-        setNextAppointment('11/12/2022 12:20 PM');
+        setNextAppointment('10/25/2022 12:20 PM');
         setComments('Second opinion');
     }
 
@@ -78,77 +77,68 @@ function MedicalTeamAdd() {
               alignItems="center"
               spacing={2}
             >
-                <div>
-                    <TextField
+                <TextField
                     label="name" 
                     variant="outlined" 
-                    size="small"
                     required
+                    fullWidth
                     value={name}
                     onChange={(event) => setName(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <TextField
+                />
+                <TextField
                     label="specialty" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     value={specialty}
                     onChange={(event) => setSpecialty(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <TextField
+                />
+                <TextField
                     label="clinic" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     value={clinic}
                     onChange={(event) => setClinic(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <TextField
+                />
+                <TextField
                     label="phone" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     value={phone}
                     onChange={(event) => setPhone(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <TextField
+                />
+               
+                <TextField
                     label="patient portal link" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     value={portal}
                     onChange={(event) => setPortal(event.target.value)}
-                    />
-                </div>
+                />
+               
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DateTimePicker
                         value={nextAppointment}
                         onChange={handleNextAppt}
                         label="next appointment" 
                         variant="outlined" 
-                        size="small"
+                        fullWidth
                         renderInput={(params) => {
                             return <TextField {...params} />;
                         }}
                     />
                 </LocalizationProvider>
-                <div>
-                    <TextField
-                        label="comments" 
-                        variant="outlined" 
-                        size="small"
-                        value={comments}
-                        onChange={(event) => setComments(event.target.value)}
-                        />
-                </div>
+                <TextField
+                    label="comments" 
+                    variant="outlined" 
+                    fullWidth
+                    value={comments}
+                    onChange={(event) => setComments(event.target.value)}
+                />
+                
                 <Button           
-                variant="outlined" 
-                size="small"
-                onClick={handleAdd}
+                    variant="outlined" 
+                    size="small"
+                    onClick={handleAdd}
                 >
                     Save
                 </Button>

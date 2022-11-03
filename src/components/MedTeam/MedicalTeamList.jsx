@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import MedicalTeamItem from "../MedicalTeamItem/MedicalTeamItem";
-import './MedicalTeamList.css';
+import MedicalTeamItem from "./MedicalTeamItem";
+// import './MedicalTeamList.css';
 
 // MUI Imports
 import AddIcon from '@mui/icons-material/Add';

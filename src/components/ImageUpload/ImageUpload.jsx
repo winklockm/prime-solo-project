@@ -53,16 +53,21 @@ function ImageUpload() {
                 alignItems="center"
                 spacing={1}
                 >
+               
+               {/* button that opens a window allowing user to select image from their computer */}
                     <input 
                     type="file" 
                     hidden
                     name="image" 
                     onChange={handleFileInputChange}
                     value={fileInputState}
-                    ref={fileInputRef}
+                    ref={fileInputRef}  // the useRef variable
                     className="form-input"
                     />
+
+                {/* avatar onclick calls that useRef variable */}
                     <Avatar onClick={()=>fileInputRef.current.click()} sx={{ width: 150, height: 150 }}>
+                        
                         { previewSource ?
                             <Avatar src={previewSource} sx={{width: 150, height: 150}} />
                         :

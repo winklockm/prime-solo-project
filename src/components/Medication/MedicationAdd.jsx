@@ -53,66 +53,53 @@ function MedicationAdd() {
               alignItems="center"
               spacing={2}
             >
-                <div>
-                    <TextField
+                <TextField
                     label="name" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     required
                     value={name}
                     onChange={(event) => setName(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <TextField
+                />
+                <TextField
                     label="indication" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     value={indication}
                     onChange={(event) => setIndication(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <TextField
+                />
+                <TextField
                     label="dose" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     value={dose}
                     onChange={(event) => setDose(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <TextField
+                />
+                <TextField
                     label="frequency" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     value={frequency}
                     onChange={(event) => setFrequency(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <TextField
+                />
+                <TextField
                     label="route" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     value={route}
                     onChange={(event) => setRoute(event.target.value)}
-                    />
-                </div>
-
-                <div>
-                    <TextField
+                />
+                <TextField
                     label="notes" 
                     variant="outlined" 
-                    size="small"
+                    fullWidth
                     value={notes}
                     onChange={(event) => setNotes(event.target.value)}
-                    />
-                </div>
+                />
                 <Button           
-                variant="outlined" 
-                size="small"
-                onClick={handleAdd}
+                    variant="outlined" 
+                    fullWidth
+                    onClick={handleAdd}
                 >
                     Save
                 </Button>

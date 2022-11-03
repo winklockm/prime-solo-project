@@ -1,9 +1,10 @@
+import Container from '@mui/material/Container';
 
 function AboutPage() {
 
 
     return (
-        <>
+        <Container maxWidth="sm">
         <div>
         <p>Technologies Used:</p>
         <ul>
@@ -23,13 +24,13 @@ function AboutPage() {
         <ul>Allow multiple users to be tied to one patient account</ul>
         </div>
         <div>
-        <p>Thanks To:</p>
-            <ul>My mom who inspired this project and who continues to make an amazing recovery</ul>
-            <ul>My sister for taking on the majority of caregiving while I complete this program</ul>
-            <ul>My husband for everything</ul>
+        <p>Thanks To:</p>  
+            <ul>My mom, who inspired this project and who continues to make an amazing recovery</ul>
+            <ul>My sister, who took on additional caregiving while I completed the Prime program</ul>
+            <ul>My husband, for too many things to list</ul>
             <ul>Prime Academy and especially the L'Engle cohort for all the support</ul>
         </div>
-        </>
+        </Container>
     )
 }
 
