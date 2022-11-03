@@ -1,35 +1,66 @@
-
-# Prime Solo Project Starting Repo
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
-
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
-
-## Use the Template for This Repository (Don't Clone)
-
-- Don't Fork or Clone. Instead, click the `Use this Template` button, and make a copy to your personal account. Make the project `PUBLIC`!
+# TakeCare Mobile App for Caregivers
+Becoming a caregiver for someone with complicated medical needs can be stressful, and with so many medical specialists across different healthcare networks, multiple medications, and insurance details to keep track of it's easy to feel overwhelmed. The TakeCare mobile app makes caregiving easier and more efficient by providing a centralized location for caregivers to store important medical-related information pertaining to the patient.
 
 
-## Prerequisites
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-Before you get started, make sure you have the following software installed on your computer:
+### Prerequisites
+What things you need to install the software and how to install them
 
-- [Node.js](https://nodejs.org/en/)
-- [PostrgeSQL](https://www.postgresql.org/)
-- [Nodemon](https://nodemon.io/)
+- Node.js
+- PostrgeSQL
+- Nodemon
 
-## Create database and table
+Give examples
+Installing
+A step by step series of examples that tell you how to get a development env running
 
-Create a new database called `prime_app` and create a `user` table:
+Say what the step will be
 
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
+Give the example
+And repeat
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+until finished
+End with an example of getting some data out of the system or using it for a little demo
+
+
+Give an example
+And coding style tests
+Explain what these tests test and why
+
+Give an example
+Deployment
+Add additional notes about how to deploy this on a live system
+
+### Built With
+- React
+- Redux
+- Saga
+- Javascript
+- Material UI - for styling
+- HTML
+- CSS
+- Node.js
+- Sql
+- PostgreSql
+- Cloudinary - for patient photo uploads
+- PG
+- Dayjs - for timestamp conversions
+
+
+### Authors
+Maggie Whitlock - connect with me on LinkedIn 
+
+License
+This project is licensed under the MIT License - see the LICENSE.md file for details
+
+Acknowledgments
+Hat tip to anyone whose code was used
+Inspiration
+etc
+
+
 
 ## Development Setup Instructions
 
@@ -85,26 +116,7 @@ There are a few videos linked below that show a walkthrough the client and sever
 - [Server Walkthrough](https://vimeo.com/453297212)
 - [Client Walkthrough](https://vimeo.com/453297124)
 
-Directory Structure:
 
-- `src/` contains the React application
-- `public/` contains static assets for the client-side
-- `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-- `server/` contains the Express App
-
-This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
-
-- src/components
-  - App/App
-  - Footer/Footer
-  - Nav/Nav
-  - AboutPage/AboutPage
-  - InfoPage/InfoPage
-  - UserPage/UserPage
-  - LoginPage/LoginPage
-  - RegisterPage/RegisterPage
-  - LogOutButton/LogOutButton
-  - ProtectedRoute/ProtectedRoute
 
 ## Deployment
 

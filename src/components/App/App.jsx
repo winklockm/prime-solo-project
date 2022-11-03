@@ -18,10 +18,9 @@ import BottomNav from '../BottomNav/BottomNav';
 import AboutPage from '../AboutPage/AboutPage';
 import './App.css';
 // Medical Team Imports
-import MedicalTeamList from '../MedicalTeamList/MedicalTeamList';
-import MedicalTeamDetail from '../MedicalTeamDetail/MedicalTeamDetail';
-import MedicalTeamAdd from '../MedicalTeamAdd/MedicalTeamAdd';
-import MedicalTeamEdit from '../MedicalTeamEdit/MedicalTeamEdit';
+import MedicalTeamList from '../MedTeam/MedicalTeamList';
+import MedicalTeamDetail from '../MedTeam/MedicalTeamDetail';
+import MedicalTeamAdd from '../MedTeam/MedicalTeamAdd';
 // Medication Imports
 import MedicationList from '../MedicationList/MedicationList';
 import MedicationDetail from '../MedicationDetail/MedicationDetail';
@@ -89,9 +88,9 @@ function App() {
           </ProtectedRoute>
 
             {/* // logged in shows medicalteam/detail/:id route with Detail component, else shows LoginPage */}
-          <ProtectedRoute exact path="/medicalteam/detail/:id/edit">
+          {/* <ProtectedRoute exact path="/medicalteam/detail/:id/edit">
             <MedicalTeamEdit />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
 
           {/* // logged in shows medicalteam/addnew route with AddNew component, else shows LoginPage */}
           <ProtectedRoute exact path="/medicalteam/addnew">

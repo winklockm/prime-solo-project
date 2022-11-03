@@ -1,5 +1,4 @@
 import {useHistory} from 'react-router-dom';
-import './MedicalTeamItem.css';
 import Stack from '@mui/material/Stack';
 import PersonIcon from '@mui/icons-material/Person';
 
